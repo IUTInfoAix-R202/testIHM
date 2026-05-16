@@ -1,6 +1,6 @@
 # Test d'IHM et langage Java
 
-**Test du samedi 4 juin 2016 – Durée 2 heures – Documents autorisés**
+**Test du samedi 4 mai 2013 – Durée 2 heures – Documents autorisés**
 
 L’objet de cet exercice est la programmation d’un jeu de tic-tac-toe (souvent nommé à tord morpion). Le tic-tac-toe est un jeu de réflexion se pratiquant à deux joueurs au tour par tour et dont le but est de créer le premier un alignement sur une grille. Le jeu se joue généralement avec papier et crayon.
 
