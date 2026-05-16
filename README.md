@@ -26,7 +26,7 @@ La bascule Swing → JavaFX dans le module s'est faite entre 2015 et 2016.
 
 ## Tests fonctionnels
 
-Chaque dossier embarque ses propres tests JUnit 5 + AssertJ. Vérifiés en CI sous Xvfb (cf. badge ci-dessus).
+Chaque dossier embarque ses propres tests JUnit Jupiter + AssertJ (versions définies dans le `pom.xml` racine via `<dependencyManagement>`). Vérifiés en CI sous Xvfb (cf. badge ci-dessus).
 
 | Dossier | Tests | Couverture |
 |---|---:|---|
@@ -61,26 +61,29 @@ Pattern adopté pour TestFX (apps JavaFX 2016+) : `Platform.startup` + `Platform
 
 ## Stack technique
 
-Tous les dossiers ont été retrofittés sur une stack homogène :
+Le dépôt est un **projet Maven multi-module** depuis 2026-05 : le `pom.xml` racine est à la fois agrégateur (`<modules>`) et parent (`<dependencyManagement>` + `<pluginManagement>`). Les 10 modules `TestIHM<année>` héritent et n'ont à déclarer ni versions, ni configurations de plugins. Stack homogène centralisée :
 
 - **Java 25** (`maven.compiler.release=25`)
-- **JavaFX 25** pour les apps JavaFX (`org.openjfx:javafx-controls:25` + `javafx-fxml` quand FXML utilisé)
-- **`module-info.java`** dans chaque dossier (`fr.univ_amu.iut.TestIHM<année>`)
-- **Maven Wrapper 3.9.14** (`./mvnw` dans chaque dossier - pas besoin de Maven installé localement)
+- **JavaFX 25** pour les apps JavaFX (`javafx-controls` + `javafx-fxml` quand FXML utilisé)
+- **JUnit Jupiter 6** + **AssertJ 3.27** + **TestFX 4.0.18** pour les tests
+- **`module-info.java`** dans chaque module (`fr.univ_amu.iut.TestIHM<année>`)
+- **Maven Wrapper 3.9.14** : `./mvnw` à la racine pour tout faire d'un coup, et dans chaque module pour le travailler isolément (pas besoin de Maven installé localement)
 
-Compilation et lancement (depuis le dossier d'un test) :
+Compilation et lancement :
 
 ```bash
-./mvnw clean compile        # compile
-./mvnw javafx:run           # lance l'app JavaFX (apps 2016+)
-./mvnw exec:java            # lance l'app Swing (2013, 2014, 2015)
-./mvnw test                 # exécute les tests JUnit
+./mvnw test                       # à la racine : teste les 10 modules d'un coup
+./mvnw -pl TestIHM2014 test       # à la racine : teste un seul module
+cd TestIHM2014 && ./mvnw test     # depuis un module : équivalent autonome
+cd TestIHM2016 && ./mvnw javafx:run   # lance l'app JavaFX (apps 2016+)
+cd TestIHM2014 && ./mvnw exec:java    # lance l'app Swing (2013, 2014, 2015)
 ```
 
 Quelques particularités :
 
 - `TestIHM2013`, `TestIHM2014` et `TestIHM2015` (Swing) utilisent `exec-maven-plugin` au lieu de `javafx-maven-plugin`.
-- `TestIHM2022` requiert Ikonli (icônes FontAwesome + Typicons).
+- `TestIHM2022` requiert Ikonli (icônes FontAwesome + Typicons), déclaré aussi dans le `dependencyManagement` racine.
+- Le bump d'une dépendance (Java, JavaFX, JUnit...) se fait dans **un seul endroit** : le `<properties>` du `pom.xml` racine.
 
 ## Provenance
 
