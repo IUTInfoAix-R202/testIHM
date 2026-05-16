@@ -150,4 +150,17 @@ public class Plateau extends GridPane {
     public boolean aGagné() {
         return aGagné.get();
     }
+
+    public boolean aPerdu() {
+        return aPerdu.get();
+    }
+
+    /** Accesseurs publics ajoutes pour les tests. */
+    public Combinaison getCombinaisonSecrete() {
+        return combinaisonSecrète;
+    }
+
+    public void setCombinaisonCourante(Combinaison combinaison) {
+        rangées[getNombreDeCoupsJoués()].setCombinaison(combinaison);
+    }
 }

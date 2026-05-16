@@ -62,10 +62,27 @@ public class TaquinBoard extends GridPane {
         carreauVide.setDisable(true);
     }
 
-    void nouvellePartie() {
+    public void nouvellePartie() {
         melanger();
         estPartieTerminee.set(false);
         nombreDeMouvement.set(0);
+    }
+
+    /** Accesseurs publics ajoutes pour les tests. */
+    public List<Carreau> getCarreaux() {
+        return carreaux;
+    }
+
+    public Carreau getCarreau(int index) {
+        return carreaux.get(index);
+    }
+
+    public Carreau getCarreauVide() {
+        return carreauVide;
+    }
+
+    public int getTaille() {
+        return taille;
     }
 
     private void deplacer(Carreau carreau){

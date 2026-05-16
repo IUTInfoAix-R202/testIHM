@@ -117,4 +117,13 @@ public class Plateau extends GridPane {
     public IntegerProperty nombreDeCasesEteintesProperty() {
         return nombreDeCasesEteintes;
     }
+
+    /** Accesseurs publics ajoutes pour les tests. */
+    public Case getCase(int colonne, int ligne) {
+        return cases[colonne][ligne];
+    }
+
+    public int getTaille() {
+        return taille;
+    }
 }

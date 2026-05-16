@@ -100,4 +100,9 @@ public class Plateau extends JPanel {
     public Combinaison combinaisonCourante() {
         return rangées[rangéeCourante].getCombinaison();
     }
+
+    /** Permet aux tests d'installer une combinaison sur la rangee courante. */
+    public void setCombinaisonCourante(Combinaison combinaison) {
+        rangées[rangéeCourante].setCombinaison(combinaison);
+    }
 }

@@ -162,4 +162,13 @@ public class Plateau extends GridPane {
     public BooleanProperty estMatchNulProperty() {
         return estMatchNul;
     }
+
+    /** Accesseur public ajoute pour les tests. */
+    public Case getCase(int ligne, int colonne) {
+        return cases[ligne][colonne];
+    }
+
+    public int getTaille() {
+        return TAILLE;
+    }
 }
