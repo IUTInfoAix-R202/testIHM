@@ -1,4 +1,4 @@
-module com.nedjar.TestIHM2015 {
+module fr.univ_amu.iut.TestIHM2015 {
     requires java.desktop;
-    exports com.nedjar;
+    exports fr.univ_amu.iut.mastermind;
 }

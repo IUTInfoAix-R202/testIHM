@@ -1,4 +1,4 @@
-package com.nedjar;
+package fr.univ_amu.iut.mastermind;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

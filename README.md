@@ -43,7 +43,6 @@ Quelques particularités :
 
 - `TestIHM2013` et `TestIHM2014` (Swing) utilisent `exec-maven-plugin` au lieu de `javafx-maven-plugin`.
 - `TestIHM2020` est un squelette modèle uniquement (l'étudiant écrivait la GUI) - compile mais n'a pas de GUI à lancer.
-- `TestIHM2015` est en package `com.nedjar` (conservé pour l'authenticité de l'archive).
 - `TestIHM2022` requiert Ikonli (icônes FontAwesome + Typicons).
 
 ## Provenance

@@ -1,4 +1,4 @@
-package com.nedjar;
+package fr.univ_amu.iut.mastermind;
 
 import java.util.Arrays;
 import java.util.Random;
