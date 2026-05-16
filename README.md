@@ -41,7 +41,7 @@ Compilation et lancement (depuis le dossier d'un test) :
 
 Quelques particularités :
 
-- `TestIHM2013` et `TestIHM2014` (Swing) utilisent `exec-maven-plugin` au lieu de `javafx-maven-plugin`.
+- `TestIHM2013`, `TestIHM2014` et `TestIHM2015` (Swing) utilisent `exec-maven-plugin` au lieu de `javafx-maven-plugin`.
 - `TestIHM2022` requiert Ikonli (icônes FontAwesome + Typicons).
 
 ## Provenance
