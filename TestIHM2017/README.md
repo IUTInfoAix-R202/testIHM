@@ -1,6 +1,6 @@
-# <img src="https://raw.githubusercontent.com/IUTInfoAix-M2105/Syllabus/master/assets/logo.png" alt="class logo" class="logo"/> Module 2105 : Introduction aux IHM en Java 
+# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" class="logo" width="120"/> Module 2105 : Introduction aux IHM en Java
 
-## Test d'IHM et langage Java [![Build Status](https://travis-ci.com/IUTInfoAix-M2105/TestIHM2017.svg?token=zPXgu159amQhEb4ShTxW&branch=master)](https://travis-ci.com/IUTInfoAix-M2105/TestIHM2017)
+## Test d'IHM et langage Java
 
 **Test du vendredi 16 juin 2017 – Durée 2 heures – Documents autorisés**
 
@@ -10,7 +10,7 @@ Il est composé de 15 petits **carreaux numérotés de 1 à 15** qui glissent da
 
 L'image ci-dessous, illustre un jeu du taquin résolu :
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/15-puzzle.svg/300px-15-puzzle.svg.png)
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/15-puzzle.svg/250px-15-puzzle.svg.png)
 
 ### Travail à réaliser
 
