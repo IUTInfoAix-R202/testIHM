@@ -1,0 +1,88 @@
+@startuml
+class Carreau {
+    - numero : Integer;
+    - position : Position;
+    - positionAttendue : Position;
+    + Carreau(value, position)
+    + getNumero() : Integer
+    + getPosition() : Position
+    + setPosition(position)
+    + estBienPlace() : boolean
+}
+
+class Position {
+    - x : int;
+    - y : int;
+    + Position(int x, int y)
+    + getX() : int
+    + getY() : int
+    + equals(Object o) : boolean
+}
+
+class StatusBar {
+    - labelNombreDeMouvement : Label;
+    - labelpartieTerminee : Label;
+    - nombreDeMouvement : IntegerProperty;
+    - estPartieTerminee : BooleanProperty;
+    - initialiser()
+    - creerAnimation()
+    - creerBindings()
+
+    ~ nouvellePartie()
+
+    + StatusBar()
+    + IntegerProperty nombreDeMouvementProperty()
+    + BooleanProperty estPartieTermineeProperty() 
+}
+
+class TaquinBoard {
+    - taille : int;
+    - carreaux : List<Carreau>;
+    - carreauVide : Carreau;
+    - estPartieTerminee : BooleanProperty;
+    - nombreDeMouvement : IntegerProperty;
+    - ecouteurDeCarreau : EventHandler<ActionEvent>
+
+    
+    - initCarreaux() 
+    - initCarreauVide()
+    - deplacer(carreau)
+    - placer(carreau, position)
+    - permuter(carreau1, carreau2)
+    - melanger()
+    ~ nouvellePartie()
+    + TaquinBoard(int taille)
+    + estPartieTermineeProperty() : BooleanProperty
+    + getNombreDeMouvement() : int
+    + nombreDeMouvementProperty() : IntegerProperty
+}
+
+class TaquinIHM {
+    - StatusBar statusBar;
+    - TaquinBoard taquinBoard;
+    - MenuBar menuBar;
+    - creerBindings()
+    - creerBarreDeMenu() : MenuBar
+    - creerMenuJeu() : Menu
+    - afficheDialogFinDePartie()
+    ~ nouvellePartie()
+    + TaquinIHM() 
+}
+
+class TaquinMain {
+    + {static} void main(args)
+    + void start( primaryStage)
+}
+TaquinIHM *-- StatusBar
+
+TaquinIHM *- TaquinBoard
+
+
+TaquinMain ..> TaquinIHM : "create"
+
+TaquinBoard *-- Carreau
+
+Carreau *- Position
+
+
+@enduml

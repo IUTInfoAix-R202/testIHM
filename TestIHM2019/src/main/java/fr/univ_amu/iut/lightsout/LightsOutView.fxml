@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fr.univ_amu.iut.lightsout.Plateau?>
+<?import fr.univ_amu.iut.lightsout.StatusBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/"
+            fx:controller="fr.univ_amu.iut.lightsout.LightsOutControleur">
+
+    <top>
+        <MenuBar>
+            <Menu text="Jeu">
+                <MenuItem text="Nouveau" onAction="#actionMenuJeuNouveau"/>
+                <MenuItem text="Quitter" onAction="#actionMenuJeuQuitter"/>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <center>
+        <Plateau fx:id="plateau"/>
+    </center>
+
+    <bottom>
+        <StatusBar fx:id="statusBar"/>
+    </bottom>
+
+</BorderPane>

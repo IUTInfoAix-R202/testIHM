@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fr.univ_amu.iut.Mastermind.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/8"
+            fx:controller="fr.univ_amu.iut.Mastermind.MasterMindControleur">
+
+    <top>
+        <MenuBar>
+            <Menu text="Jeu">
+                <MenuItem text="Nouveau" onAction="#actionMenuJeuNouveau"/>
+                <MenuItem text="Quitter" onAction="#actionMenuJeuQuitter"/>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <center>
+        <Plateau fx:id="plateau"/>
+    </center>
+
+    <bottom>
+        <VBox>
+            <HBox alignment="CENTER">
+                <Button text="Effacer" onAction="#actionBoutonEffacer"/>
+                <Button text="Valider" onAction="#actionBoutonValider"/>
+            </HBox>
+            <StatusBar fx:id="statusBar"/>
+        </VBox>
+    </bottom>
+
+</BorderPane>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root prefHeight="47.0" prefWidth="207.0" spacing="10.0" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label fx:id="enonce" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="37.0" prefWidth="140.0" style="-fx-background-color: lightgreen;" text="10 + 10 = ">
+          <font>
+             <Font name="System Bold" size="18.0" />
+          </font>
+        </Label>
+        <TextField fx:id="reponse" prefHeight="37.0" prefWidth="103.0" />
+    </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</fx:root>

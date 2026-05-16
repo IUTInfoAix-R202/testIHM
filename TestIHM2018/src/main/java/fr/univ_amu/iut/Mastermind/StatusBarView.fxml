@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<fx:root xmlns:fx="http://javafx.com/fxml/" type="javafx.scene.layout.BorderPane"
+         xmlns="http://javafx.com/javafx/">
+    <left>
+        <Label fx:id="labelNombreDeCoupsJoués"/>
+    </left>
+
+    <center>
+        <Label fx:id="labelTemps"/>
+    </center>
+
+    <right>
+        <Label fx:id="labelpartieTerminee"/>
+    </right>
+</fx:root>

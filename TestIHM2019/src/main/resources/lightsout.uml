@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="1542.0">fr.univ_amu.iut.lightsout.LightsOutMain</node>
+    <node x="638.0" y="1024.0">fr.univ_amu.iut.lightsout.LightsOutControleur</node>
+    <node x="817.0" y="0.0">fr.univ_amu.iut.lightsout.StatusBar</node>
+    <node x="1298.0" y="1024.0">fr.univ_amu.iut.lightsout.Position</node>
+    <node x="0.0" y="1024.0">fr.univ_amu.iut.lightsout.Case</node>
+    <node x="0.0" y="0.0">fr.univ_amu.iut.lightsout.Plateau</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.2385964912280705" x="1338.0" y="562.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

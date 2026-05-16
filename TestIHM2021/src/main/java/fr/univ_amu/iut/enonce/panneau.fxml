@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root alignment="CENTER" prefHeight="593.0" prefWidth="322.0" styleClass="root" type="javafx.scene.layout.GridPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="55.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.0" minWidth="10.0" prefWidth="235.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="115.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="285.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="314.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="314.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="314.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="314.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="314.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="314.0" minHeight="10.0" prefHeight="298.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label alignment="CENTER" prefHeight="61.0" prefWidth="327.0" text="A" GridPane.columnSpan="2" />
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="47.0" text="xA" GridPane.rowIndex="1" />
+      <Slider majorTickUnit="5.0" max="20.0" minorTickCount="4" prefHeight="44.0" prefWidth="280.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Label alignment="CENTER" prefHeight="17.0" prefWidth="46.0" text="yA" GridPane.rowIndex="2" />
+      <Slider majorTickUnit="5.0" max="20.0" minorTickCount="4" prefHeight="43.0" prefWidth="280.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label alignment="CENTER" prefHeight="53.0" prefWidth="323.0" text="B" GridPane.columnSpan="2" GridPane.rowIndex="3">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </Label>
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="47.0" text="xB" GridPane.rowIndex="4" />
+      <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="47.0" text="yB" GridPane.rowIndex="5" />
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <children>
+            <Button mnemonicParsing="false" text="-" />
+            <TextField text="5" />
+            <Button mnemonicParsing="false" text="+" />
+         </children>
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="280.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <children>
+            <Button alignment="CENTER" mnemonicParsing="false" text="-" />
+             <TextField text="2" />
+            <Button alignment="CENTER" mnemonicParsing="false" text="+" />
+         </children>
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </HBox>
+      <Label alignment="CENTER" prefHeight="17.0" prefWidth="63.0" text="Perimeter" GridPane.rowIndex="6" />
+      <TextField prefHeight="25.0" prefWidth="206.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Pane minHeight="291.0" minWidth="286.0" prefHeight="309.0" prefWidth="299.0" style="-fx-background-color: cyan;" GridPane.columnSpan="2" GridPane.rowIndex="7"/>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</fx:root>
