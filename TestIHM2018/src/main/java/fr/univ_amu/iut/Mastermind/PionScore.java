@@ -11,8 +11,7 @@ public enum PionScore {
     private Image image;
 
     PionScore(String nomFichier) {
-        ClassLoader classLoader = getClass().getClassLoader();
-        this.image = new Image(classLoader.getResource(nomFichier).toExternalForm());
+        this.image = new Image(PionScore.class.getResourceAsStream("/" + nomFichier));
     }
 
     public Image getImage() {

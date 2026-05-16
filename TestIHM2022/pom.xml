@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>fr.univ_amu.iut</groupId>
-    <artifactId>TestIHM</artifactId>
-    <name>Test IHM 2022</name>
-    <packaging>jar</packaging>
+    <artifactId>TestIHM2022</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>TestIHM2022</name>
+    <description>Test IHM 2022 - Wordle en JavaFX (premier test BUT, R2.02 / R2.03)</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <maven.compiler.release>17</maven.compiler.release>
-        <junit.jupiter.version>5.4.2</junit.jupiter.version>
-        <javafx.version>18.0.1</javafx.version>
-        <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
+        <maven.compiler.release>25</maven.compiler.release>
+        <javafx.version>25</javafx.version>
         <ikonli.version>12.3.1</ikonli.version>
     </properties>
 
@@ -27,44 +25,10 @@
             <artifactId>javafx-controls</artifactId>
             <version>${javafx.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-graphics</artifactId>
-            <version>${javafx.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-media</artifactId>
-            <version>${javafx.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.22.0</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -82,73 +46,49 @@
             <artifactId>ikonli-typicons-pack</artifactId>
             <version>${ikonli.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.27.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/*</include>
-                </includes>
+                <directory>${basedir}/src/main/resources</directory>
             </resource>
             <resource>
-                <filtering>false</filtering>
                 <directory>src/main/java</directory>
                 <includes>
                     <include>**/*.fxml</include>
                 </includes>
             </resource>
         </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
-                <configuration>
-                    <release>${maven.compiler.release}</release>
-                    <source>17</source>
-                    <target>17</target>
-                    <compilerArgs>--enable-preview</compilerArgs>
-                </configuration>
-            </plugin>
 
+        <plugins>
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>${javafx.maven.plugin.version}</version>
+                <version>0.0.8</version>
                 <configuration>
-                    <jlinkImageName>app</jlinkImageName>
-                    <launcher>launcher</launcher>
-                    <mainClass>testIHM2022/fr.univ_amu.iut.WordleMain</mainClass>
+                    <mainClass>fr.univ_amu.iut.TestIHM2022/fr.univ_amu.iut.WordleMain</mainClass>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
-                <configuration>
-                    <argLine>
-                        --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
-                    </argLine>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
 </project>

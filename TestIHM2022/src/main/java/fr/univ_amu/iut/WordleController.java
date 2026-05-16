@@ -16,9 +16,9 @@ public class WordleController {
                 case BACK_SPACE -> interactor.eraseLetter();
                 case UNDEFINED -> {
                     switch (event.getCharacter()) {
-                        case String s && s.equals("\r") -> interactor.checkWord();
-                        case String s && s.equals("\b") -> interactor.eraseLetter();
-                        case String s && Character.isAlphabetic(s.charAt(0)) ->
+                        case String s when s.equals("\r") -> interactor.checkWord();
+                        case String s when s.equals("\b") -> interactor.eraseLetter();
+                        case String s when Character.isAlphabetic(s.charAt(0)) ->
                                 interactor.handleLetter(s.toUpperCase().charAt(0));
                         default -> System.out.println("Not valid character :" + event.getCharacter());
                     }

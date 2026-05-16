@@ -18,8 +18,7 @@ public enum PionJeu {
     private Image image;
 
     PionJeu(String nomFichier) {
-        ClassLoader classLoader = getClass().getClassLoader();
-        this.image = new Image(classLoader.getResource(nomFichier).toExternalForm());
+        this.image = new Image(PionJeu.class.getResourceAsStream("/" + nomFichier));
     }
 
     public Image getImage() {

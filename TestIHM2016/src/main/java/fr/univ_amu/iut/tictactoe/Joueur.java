@@ -28,7 +28,7 @@ public enum Joueur {
   private String nom;
 
   Joueur(String fileName, String nom, Color couleur) {
-    this.image   = new Image("assets/" + fileName);
+    this.image   = new Image(Joueur.class.getResourceAsStream("/assets/" + fileName));
     this.couleur = couleur;
     this.nom = nom;
   }
