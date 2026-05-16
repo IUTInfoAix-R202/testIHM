@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>TestIHM2022</name>
-    <description>Test IHM 2022 - Wordle en JavaFX (premier test BUT, R2.02 / R2.03)</description>
+    <description>Sujet du test d'IHM 2022 - Wordle en JavaFX (premier test BUT, R2.02 / R2.03)</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

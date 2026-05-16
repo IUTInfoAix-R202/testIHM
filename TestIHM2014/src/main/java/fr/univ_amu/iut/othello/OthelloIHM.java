@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class OthelloIHM extends JFrame {
+public class OthelloIHM extends JFrame {
     private static final int TAILLE = 4;
 
     private StatusBar statusBar = new StatusBar();

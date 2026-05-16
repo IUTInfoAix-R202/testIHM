@@ -16,6 +16,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>25</maven.compiler.release>
         <javafx.version>25</javafx.version>
+        <junit.jupiter.version>5.10.2</junit.jupiter.version>
+        <testfx.version>4.0.18</testfx.version>
+        <assertj.version>3.27.0</assertj.version>
     </properties>
 
     <dependencies>
@@ -26,27 +29,33 @@
         </dependency>
 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.27.0</version>
+            <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.testfx</groupId>
             <artifactId>testfx-core</artifactId>
-            <version>4.0.18</version>
+            <version>${testfx.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.testfx</groupId>
-            <artifactId>testfx-junit</artifactId>
-            <version>4.0.18</version>
+            <artifactId>testfx-junit5</artifactId>
+            <version>${testfx.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -59,6 +68,19 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>fr.univ_amu.iut.TestIHM2017/fr.univ_amu.iut.taquin.TaquinMain</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
+                <configuration>
+                    <!-- TestFX exige le mode classpath (pas module-path) -->
+                    <useModulePath>false</useModulePath>
+                    <argLine>
+                        --enable-native-access=ALL-UNNAMED
+                        --add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+                    </argLine>
                 </configuration>
             </plugin>
         </plugins>

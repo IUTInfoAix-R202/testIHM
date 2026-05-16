@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>TestIHM2020</name>
-    <description>Sujet du test d'IHM du 12 juin 2020 - Traceur de fonction en JavaFX (squelette : etudiant a ecrire la GUI)</description>
+    <description>Sujet du test d'IHM du 12 juin 2020 - Traceur de fonction en JavaFX</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

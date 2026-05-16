@@ -1,0 +1,64 @@
+name: CI - Tests des dossiers TestIHM
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: ${{ matrix.dossier }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dossier:
+          - TestIHM2013
+          - TestIHM2014
+          - TestIHM2015
+          - TestIHM2016
+          - TestIHM2017
+          - TestIHM2018
+          - TestIHM2019
+          - TestIHM2020
+          - TestIHM2021
+          - TestIHM2022
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java 25 (Zulu)
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 25
+          check-latest: false
+
+      - name: Cache Maven repository
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles(format('{0}/pom.xml', matrix.dossier)) }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Installer Xvfb (pour les apps JavaFX/Swing en headless)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends xvfb
+
+      - name: Verifier l'executable mvnw
+        working-directory: ${{ matrix.dossier }}
+        run: |
+          test -x ./mvnw || chmod +x ./mvnw
+          ./mvnw -v
+
+      - name: Compile + test sous Xvfb
+        working-directory: ${{ matrix.dossier }}
+        run: xvfb-run -a ./mvnw -B -ntp clean test

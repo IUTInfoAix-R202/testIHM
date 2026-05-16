@@ -1,6 +1,6 @@
 open module fr.univ_amu.iut.TestIHM2022 {
-    requires transitive javafx.controls;
-    requires transitive javafx.fxml;
+    requires javafx.controls;
+    requires javafx.fxml;
 
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.javafx;
