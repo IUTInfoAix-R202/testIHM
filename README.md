@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/IUTInfoAix-R202/testIHM/actions/workflows/ci.yml/badge.svg)](https://github.com/IUTInfoAix-R202/testIHM/actions/workflows/ci.yml)
 
-Ce dépôt regroupe les sujets des **tests terminaux d'IHM Java** donnés entre **2013 et 2022** dans le département informatique de l'IUT d'Aix-Marseille. Il consolide en un seul lieu des sujets historiquement éclatés entre les organisations [`IUTInfoAix-M2105`](https://github.com/IUTInfoAix-M2105) (module pré-BUT) et [`IUTInfoAix-R202-archive`](https://github.com/IUTInfoAix-R202-archive) (transition vers le BUT).
+Ce dépôt regroupe les sujets des **tests terminaux d'IHM Java** donnés entre **2012 et 2022** dans le département informatique de l'IUT d'Aix-Marseille. Il consolide en un seul lieu des sujets historiquement éclatés entre les organisations [`IUTInfoAix-M2105`](https://github.com/IUTInfoAix-M2105) (module pré-BUT) et [`IUTInfoAix-R202-archive`](https://github.com/IUTInfoAix-R202-archive) (transition vers le BUT).
 
 L'archivage a été réalisé en mai 2026 dans le cadre de la refonte du module **R2.02 - Développement d'applications avec IHM** (voir [`IUTInfoAix-R202`](https://github.com/IUTInfoAix-R202) - cours, TPs, syllabus).
 
@@ -10,6 +10,7 @@ L'archivage a été réalisé en mai 2026 dans le cadre de la refonte du module 
 
 | Dossier | Date | GUI | Thème | Notes |
 |---|---|---|---|---|
+| [`TestIHM2012`](TestIHM2012/) | mai 2012 | Swing/AWT | Démineur | **Sujet perdu** - aucune archive retrouvée lors de la consolidation 2026 |
 | [`TestIHM2013`](TestIHM2013/) | 04/05/2013 | Swing/AWT | Morpion (Tic-tac-toe) | Implémentation Maven/Java 25 reconstituée à partir du sujet (les 14 questions) |
 | [`TestIHM2014`](TestIHM2014/) | 02/06/2014 | Swing/AWT | Othello | Maven/Java 25, package `fr.univ_amu.iut.othello` |
 | [`TestIHM2015`](TestIHM2015/) | 06/06/2015 | Swing/AWT | Mastermind | JUnit 3 |
