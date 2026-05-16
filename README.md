@@ -10,7 +10,7 @@ L'archivage a été réalisé en mai 2026 dans le cadre de la refonte du module 
 |---|---|---|---|---|
 | [`TestIHM2013`](TestIHM2013/) | 04/05/2013 | Swing/AWT | Morpion (Tic-tac-toe) | Sujet seul (pas de code archivé) |
 | [`TestIHM2014`](TestIHM2014/) | 02/06/2014 | Swing/AWT | Othello | Pas de structure Maven (code historique) |
-| [`TestIHM2015`](TestIHM2015/) | 06/05/2015 | Swing/AWT | Mastermind | JUnit 3 |
+| [`TestIHM2015`](TestIHM2015/) | 06/06/2015 | Swing/AWT | Mastermind | JUnit 3 |
 | [`TestIHM2016`](TestIHM2016/) | 04/06/2016 | JavaFX | Tic-tac-toe | Première édition JavaFX, sujet 2013 re-skeletté ; **réutilisé tel quel comme rattrapage le 21/06/2019** |
 | [`TestIHM2017`](TestIHM2017/) | 16/06/2017 | JavaFX | Taquin | |
 | [`TestIHM2018`](TestIHM2018/) | 09/06/2018 | JavaFX | Mastermind | |
