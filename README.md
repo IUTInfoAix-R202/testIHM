@@ -21,6 +21,31 @@ L'archivage a été réalisé en mai 2026 dans le cadre de la refonte du module 
 
 La bascule Swing → JavaFX dans le module s'est faite entre 2015 et 2016.
 
+## Stack technique
+
+Tous les dossiers ont été retrofittés sur une stack homogène :
+
+- **Java 25** (`maven.compiler.release=25`)
+- **JavaFX 25** pour les apps JavaFX (`org.openjfx:javafx-controls:25` + `javafx-fxml` quand FXML utilisé)
+- **`module-info.java`** dans chaque dossier (`fr.univ_amu.iut.TestIHM<année>`)
+- **Maven Wrapper 3.9.14** (`./mvnw` dans chaque dossier - pas besoin de Maven installé localement)
+
+Compilation et lancement (depuis le dossier d'un test) :
+
+```bash
+./mvnw clean compile        # compile
+./mvnw javafx:run           # lance l'app JavaFX (apps 2016+)
+./mvnw exec:java            # lance l'app Swing (2013, 2014, 2015)
+./mvnw test                 # exécute les tests JUnit
+```
+
+Quelques particularités :
+
+- `TestIHM2013` et `TestIHM2014` (Swing) utilisent `exec-maven-plugin` au lieu de `javafx-maven-plugin`.
+- `TestIHM2020` est un squelette modèle uniquement (l'étudiant écrivait la GUI) - compile mais n'a pas de GUI à lancer.
+- `TestIHM2015` est en package `com.nedjar` (conservé pour l'authenticité de l'archive).
+- `TestIHM2022` requiert Ikonli (icônes FontAwesome + Typicons).
+
 ## Provenance
 
 - 9 sujets proviennent de [`IUTInfoAix-M2105`](https://github.com/IUTInfoAix-M2105) :
