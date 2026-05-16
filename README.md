@@ -8,8 +8,8 @@ L'archivage a été réalisé en mai 2026 dans le cadre de la refonte du module 
 
 | Dossier | Date | GUI | Thème | Notes |
 |---|---|---|---|---|
-| [`TestIHM2013`](TestIHM2013/) | 04/05/2013 | Swing/AWT | Morpion (Tic-tac-toe) | Sujet seul (pas de code archivé) |
-| [`TestIHM2014`](TestIHM2014/) | 02/06/2014 | Swing/AWT | Othello | Pas de structure Maven (code historique) |
+| [`TestIHM2013`](TestIHM2013/) | 04/05/2013 | Swing/AWT | Morpion (Tic-tac-toe) | Implémentation Maven/Java 25 reconstituée à partir du sujet (les 14 questions) |
+| [`TestIHM2014`](TestIHM2014/) | 02/06/2014 | Swing/AWT | Othello | Maven/Java 25, package `fr.univ_amu.iut.othello` |
 | [`TestIHM2015`](TestIHM2015/) | 06/06/2015 | Swing/AWT | Mastermind | JUnit 3 |
 | [`TestIHM2016`](TestIHM2016/) | 04/06/2016 | JavaFX | Tic-tac-toe | Première édition JavaFX, sujet 2013 re-skeletté ; **réutilisé tel quel comme rattrapage le 21/06/2019** |
 | [`TestIHM2017`](TestIHM2017/) | 16/06/2017 | JavaFX | Taquin | |
@@ -41,6 +41,4 @@ Ces sujets servent de base d'inspiration pour le **CC3** du module R2.02 (mini-a
 - **Application mathématique** : tracé de fonction
 - **Application pédagogique** : problèmes arithmétiques
 
-Le format historique - sujet papier + squelette Java avec quelques classes utilitaires + 2h de TP - reste pertinent pour le nouveau CC3, en l'adaptant à la stack 2026 (Java 25, JavaFX 25, Maven Wrapper).
-
-> Les sujets **2013, 2014 et 2015** sont en **Swing/AWT** : seuls leurs énoncés (règles du jeu, format attendu) sont réutilisables ; le code Java archivé (quand il existe) est obsolète et devrait être réécrit en JavaFX. À partir de **2016** (sujet 2013 transformé en JavaFx), les squelettes JavaFX sont directement portables sur la stack 2026 moyennant la mise à jour des versions et de la structure de projet.
+Le format historique - sujet papier + squelette Java avec quelques classes utilitaires + 2h sur papier - reste pertinent pour le nouveau CC3, en l'adaptant à la stack 2026 (Java 25, JavaFX 25, Maven Wrapper).

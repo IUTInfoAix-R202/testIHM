@@ -1,9 +1,8 @@
+package fr.univ_amu.iut.othello;
+
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Created by nedjar on 01/06/14.
- */
 class StatusBar extends JPanel {
     private static final String MESSAGE_TOUR_NOIR = "Noir joue !";
     private static final String MESSAGE_TOUR_BLANC = "Blanc joue !";

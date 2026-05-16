@@ -1,3 +1,5 @@
+package fr.univ_amu.iut.othello;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -5,9 +7,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by nedjar on 01/06/14.
- */
 class Othellier extends JPanel {
 
     private static final Point[] directions = {

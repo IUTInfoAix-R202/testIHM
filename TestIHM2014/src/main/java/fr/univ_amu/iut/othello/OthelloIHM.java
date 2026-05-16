@@ -1,11 +1,10 @@
+package fr.univ_amu.iut.othello;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by nedjar on 01/06/14.
- */
 class OthelloIHM extends JFrame {
     private static final int TAILLE = 4;
 

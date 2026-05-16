@@ -1,18 +1,17 @@
+package fr.univ_amu.iut.othello;
+
 import javax.swing.*;
 
-/**
- * Created by nedjar on 01/06/14.
- */
 public enum Joueur {
-    NOIR("resources/noir.png"),
-    BLANC("resources/blanc.png"),
-    PERSONNE("resources/vide.png");
+    NOIR("/noir.png"),
+    BLANC("/blanc.png"),
+    PERSONNE("/vide.png");
 
     private final Icon icon;
     private int score;
 
-    private Joueur(String fileName) {
-        icon = new ImageIcon(fileName);
+    private Joueur(String resourcePath) {
+        icon = new ImageIcon(Joueur.class.getResource(resourcePath));
         score = 0;
     }
 
