@@ -1,4 +1,6 @@
-#Test d'IHM et langage Java
+# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" width="120"/> Test d'IHM 2014 — Othello
+
+### IUT d'Aix-Marseille - Département Informatique - DUT (Module M2105)
 
 **Test du lundi 2 juin 2014 – Durée 2 heures – Documents autorisés**
 

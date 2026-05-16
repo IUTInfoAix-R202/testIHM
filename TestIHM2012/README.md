@@ -1,6 +1,8 @@
-# TestIHM2012
+# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" width="120"/> Test d'IHM 2012 — Démineur
 
-Sujet du test d'IHM de **mai 2012** - département informatique de l'IUT d'Aix-Marseille, DUT 1ère année.
+### IUT d'Aix-Marseille - Département Informatique - DUT (Module M2105)
+
+> ⚠️ **Sujet non retrouvé** lors de l'archivage 2026 (PDF + sources Java Swing perdus).
 
 - **Thème** : Démineur (Minesweeper) en Swing.
 - **Statut** : sujet **non retrouvé** lors de l'archivage 2026.

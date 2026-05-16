@@ -1,6 +1,8 @@
-## Test d'IHM et langage Java
+# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" width="120"/> Test d'IHM 2019 — Lights Out
 
-### Test du samedi 8 juin 2019 – Durée 2 heures – Documents autorisés
+### IUT d'Aix-Marseille - Département Informatique - DUT (Module M2105)
+
+**Test du samedi 8 juin 2019 – Durée 2 heures – Documents autorisés**
 
 L'objectif de cet exercice est la programmation d'une version JavaFx du jeu **Lights Out**. Lights Out est un jeu électronique publié par Tiger Electronics en 1995.
 

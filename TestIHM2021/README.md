@@ -1,5 +1,8 @@
-# Test d'IHM et langage Java
-## Samedi 12 juin 2021 – Durée 2 heures – Documents autorisés
+# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" width="120"/> Test d'IHM 2021 — Problèmes arithmétiques + dessin de rectangles
+
+### IUT d'Aix-Marseille - Département Informatique - DUT (Module M2105)
+
+**Test du samedi 12 juin 2021 – Durée 2 heures – Documents autorisés**
 
 **Rendre 2 copies, même blanches : une pour les exercices 1 et 2 et une autre pour l’exercice 3.**
 

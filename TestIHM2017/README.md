@@ -1,6 +1,6 @@
-# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" class="logo" width="120"/> Module 2105 : Introduction aux IHM en Java
+# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" width="120"/> Test d'IHM 2017 — Taquin
 
-## Test d'IHM et langage Java
+### IUT d'Aix-Marseille - Département Informatique - DUT (Module M2105)
 
 **Test du vendredi 16 juin 2017 – Durée 2 heures – Documents autorisés**
 

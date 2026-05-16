@@ -1,6 +1,8 @@
-# Test d'IHM et langage Java
+# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" width="120"/> Test d'IHM 2018 — Mastermind (JavaFX)
 
-## Test du samedi 9 juin 2018 – Durée 2 heures – Documents autorisés
+### IUT d'Aix-Marseille - Département Informatique - DUT (Module M2105)
+
+**Test du samedi 9 juin 2018 – Durée 2 heures – Documents autorisés**
 
 L'objet de ce test est l'écriture en Java d'une IHM pour une version simplifiée du jeu Mastermind. Le Mastermind est un jeu de société pour deux joueurs dont le but est de trouver une combinaison de couleurs.
 
