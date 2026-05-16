@@ -1,17 +1,10 @@
 version: 2
 updates:
   - package-ecosystem: maven
-    directories:
-      - /TestIHM2013
-      - /TestIHM2014
-      - /TestIHM2015
-      - /TestIHM2016
-      - /TestIHM2017
-      - /TestIHM2018
-      - /TestIHM2019
-      - /TestIHM2020
-      - /TestIHM2021
-      - /TestIHM2022
+    # Depuis la consolidation multi-module 2026-05, toutes les deps sont dans
+    # le root pom.xml (dependencyManagement + pluginManagement). Un seul
+    # directory a scanner.
+    directory: /
     schedule:
       interval: monthly
       day: monday
