@@ -6,18 +6,20 @@ L'archivage a été réalisé en mai 2026 dans le cadre de la refonte du module 
 
 ## Sujets archivés
 
-| Dossier | Date | Thème | Notes |
-|---|---|---|---|
-| [`TestIHM2014`](TestIHM2014/) | 02/06/2014 | Othello | Pas de structure Maven (code historique) |
-| [`TestIHM2015`](TestIHM2015/) | 06/05/2015 | Mastermind | |
-| [`TestIHM2016`](TestIHM2016/) | 04/06/2016 | (non précisé) | Dépôt sans code Java, sujet PDF seul |
-| [`TestIHM2017`](TestIHM2017/) | 16/06/2017 | Taquin | |
-| [`TestIHM2018`](TestIHM2018/) | 09/06/2018 | Mastermind | |
-| [`TestIHM2019`](TestIHM2019/) | 08/06/2019 | Lights Out | |
-| [`RattrapageIHM2019`](RattrapageIHM2019/) | 21/06/2019 | Tic-tac-toe | Rattrapage |
-| [`TestIHM2020`](TestIHM2020/) | 12/06/2020 | Tracé de fonction sur intervalle | |
-| [`TestIHM2021`](TestIHM2021/) | 12/06/2021 | Problèmes arithmétiques + dessin de rectangles | 3 exercices, **version solution** conservée |
-| [`TestIHM2022`](TestIHM2022/) | (BUT 1) | Wordle | Dernier test du module M2105, premier R2.02 |
+| Dossier | Date | GUI | Thème | Notes |
+|---|---|---|---|---|
+| [`TestIHM2014`](TestIHM2014/) | 02/06/2014 | Swing/AWT | Othello | Pas de structure Maven (code historique) |
+| [`TestIHM2015`](TestIHM2015/) | 06/05/2015 | Swing/AWT | Mastermind | JUnit 3 |
+| [`TestIHM2016`](TestIHM2016/) | 04/06/2016 | n/a | (non précisé) | Dépôt sans code Java, sujet PDF seul |
+| [`TestIHM2017`](TestIHM2017/) | 16/06/2017 | JavaFX | Taquin | Première édition JavaFX |
+| [`TestIHM2018`](TestIHM2018/) | 09/06/2018 | JavaFX | Mastermind | |
+| [`TestIHM2019`](TestIHM2019/) | 08/06/2019 | JavaFX | Lights Out | |
+| [`RattrapageIHM2019`](RattrapageIHM2019/) | 21/06/2019 | JavaFX | Tic-tac-toe | Rattrapage |
+| [`TestIHM2020`](TestIHM2020/) | 12/06/2020 | JavaFX | Tracé de fonction sur intervalle | Squelette modèle uniquement, GUI à écrire par l'étudiant |
+| [`TestIHM2021`](TestIHM2021/) | 12/06/2021 | JavaFX | Problèmes arithmétiques + dessin de rectangles | 3 exercices, **version solution** conservée |
+| [`TestIHM2022`](TestIHM2022/) | (BUT 1) | JavaFX | Wordle | Dernier test du module M2105, premier R2.02 |
+
+La bascule Swing → JavaFX dans le module s'est faite entre 2015 et 2017.
 
 ## Provenance
 
@@ -35,3 +37,5 @@ Ces sujets servent de base d'inspiration pour le **CC3** du module R2.02 (mini-a
 - **Application pédagogique** : problèmes arithmétiques
 
 Le format historique - sujet papier + squelette Java avec quelques classes utilitaires + 2h de TP - reste pertinent pour le nouveau CC3, en l'adaptant à la stack 2026 (Java 25, JavaFX 25, Maven Wrapper).
+
+> Les sujets 2014 et 2015 sont en **Swing/AWT** : seuls leurs énoncés (règles du jeu, format attendu) sont réutilisables ; le code Java livré est obsolète et devrait être réécrit en JavaFX. Le sujet 2016 ne contient pas de code, seul le PDF du sujet est exploitable. À partir de 2017, les squelettes JavaFX sont directement portables sur la stack 2026 moyennant la mise à jour des versions et de la structure de projet.
