@@ -26,6 +26,13 @@ updates:
       javafx:
         patterns:
           - "org.openjfx:*"
+      assertj:
+        patterns:
+          - "org.assertj:*"
+      maven-plugins:
+        patterns:
+          - "org.apache.maven.plugins:*"
+          - "org.codehaus.mojo:*"
     ignore:
       # JavaFX : bumps majeurs souvent breaking, on les laisse passer manuellement.
       - dependency-name: "org.openjfx:*"
