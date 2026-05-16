@@ -1,0 +1,38 @@
+version: 2
+updates:
+  - package-ecosystem: maven
+    directories:
+      - /TestIHM2013
+      - /TestIHM2014
+      - /TestIHM2015
+      - /TestIHM2016
+      - /TestIHM2017
+      - /TestIHM2018
+      - /TestIHM2019
+      - /TestIHM2020
+      - /TestIHM2021
+      - /TestIHM2022
+    schedule:
+      interval: monthly
+      day: monday
+    open-pull-requests-limit: 10
+    groups:
+      junit:
+        patterns:
+          - "org.junit.*"
+      testfx:
+        patterns:
+          - "org.testfx:*"
+      javafx:
+        patterns:
+          - "org.openjfx:*"
+    ignore:
+      # JavaFX : bumps majeurs souvent breaking, on les laisse passer manuellement.
+      - dependency-name: "org.openjfx:*"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+      day: monday

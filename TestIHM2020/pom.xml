@@ -82,6 +82,9 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>fr.univ_amu.iut.TestIHM2020/fr.univ_amu.iut.ihm.TraceurDeFonction</mainClass>
+                    <options>
+                        <option>--enable-native-access=javafx.graphics</option>
+                    </options>
                 </configuration>
             </plugin>
             <plugin>

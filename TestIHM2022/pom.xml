@@ -87,6 +87,9 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>fr.univ_amu.iut.TestIHM2022/fr.univ_amu.iut.WordleMain</mainClass>
+                    <options>
+                        <option>--enable-native-access=javafx.graphics</option>
+                    </options>
                 </configuration>
             </plugin>
         </plugins>
