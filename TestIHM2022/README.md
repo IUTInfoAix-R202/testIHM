@@ -1,5 +1,5 @@
 
-# <img src="https://raw.githubusercontent.com/IUTInfoAix-M2105/Syllabus/master/assets/logo.png" alt="class logo" class="logo"/>Test IHM et Artisanat logiciel 
+# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" class="logo" width="120"/>Test IHM et Artisanat logiciel 
 ### IUT d’Aix-Marseille – Département Informatique Aix-en-Provence
 
 * **Ressource:** [R2.03 et R2.02](https://cache.media.enseignementsup-recherche.gouv.fr/file/SPE4-MESRI-17-6-2021/35/5/Annexe_17_INFO_BUT_annee_1_1411355.pdf)
