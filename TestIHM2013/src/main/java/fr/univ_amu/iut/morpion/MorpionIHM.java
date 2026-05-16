@@ -69,9 +69,9 @@ public class MorpionIHM extends JFrame {
         barreEtat = new JLabel();
         add(barreEtat, BorderLayout.SOUTH);
 
-        pack();
         joueurCourant = 0;
         barreEtat.setText(jeu.nomJoueur(joueurCourant) + ", à vous");
+        pack();
     }
 
     public static void main(String[] args) {
