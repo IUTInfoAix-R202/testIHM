@@ -27,7 +27,9 @@ class Othellier extends JPanel {
             if (estPositionJouable(caseSelectionnee)) {
                 capturer(caseSelectionnee);
                 tourSuivant();
-                pere.updateStatus();
+                if (pere != null) {
+                    pere.updateStatus();
+                }
             }
         }
     };
@@ -73,14 +75,30 @@ class Othellier extends JPanel {
         Joueur.initialiserScores();
         vider();
         positionnerPionsDebutPartie();
-        pere.updateStatus();
+        if (pere != null) {
+            pere.updateStatus();
+        }
     }
 
     public boolean peutJouer() {
         return !casesJouables().isEmpty();
     }
 
-    private List<Case> casesJouables() {
+    // -- Accesseurs publics pour les tests (ajoutes lors du retrofit 2026) --
+
+    public Case getCase(int ligne, int colonne) {
+        return cases[ligne][colonne];
+    }
+
+    public void setJoueurCourant(Joueur joueurCourant) {
+        this.joueurCourant = joueurCourant;
+    }
+
+    public int getTaille() {
+        return taille;
+    }
+
+    public List<Case> casesJouables() {
         List<Case> casesJouables = new ArrayList<Case>();
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
