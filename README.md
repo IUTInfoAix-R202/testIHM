@@ -11,16 +11,16 @@ L'archivage a été réalisé en mai 2026 dans le cadre de la refonte du module 
 | Dossier | Date | GUI | Thème | Notes |
 |---|---|---|---|---|
 | [`TestIHM2012`](TestIHM2012/) | mai 2012 | Swing/AWT | Démineur | **Sujet perdu** - aucune archive retrouvée lors de la consolidation 2026 |
-| [`TestIHM2013`](TestIHM2013/) | 04/05/2013 | Swing/AWT | Morpion (Tic-tac-toe) | Implémentation Maven/Java 25 reconstituée à partir du sujet (les 14 questions) |
-| [`TestIHM2014`](TestIHM2014/) | 02/06/2014 | Swing/AWT | Othello | Maven/Java 25, package `fr.univ_amu.iut.othello` |
-| [`TestIHM2015`](TestIHM2015/) | 06/06/2015 | Swing/AWT | Mastermind | JUnit 3 |
+| [`TestIHM2013`](TestIHM2013/) | 04/05/2013 | Swing/AWT | Morpion (Tic-tac-toe) | Implémentation reconstituée à partir du sujet (les 14 questions) |
+| [`TestIHM2014`](TestIHM2014/) | 02/06/2014 | Swing/AWT | Othello | |
+| [`TestIHM2015`](TestIHM2015/) | 06/06/2015 | Swing/AWT | Mastermind | |
 | [`TestIHM2016`](TestIHM2016/) | 04/06/2016 | JavaFX | Tic-tac-toe | Première édition JavaFX, sujet 2013 re-skeletté  |
 | [`TestIHM2017`](TestIHM2017/) | 16/06/2017 | JavaFX | Taquin | |
 | [`TestIHM2018`](TestIHM2018/) | 09/06/2018 | JavaFX | Mastermind | |
 | [`TestIHM2019`](TestIHM2019/) | 08/06/2019 | JavaFX | Lights Out | |
 | [`TestIHM2020`](TestIHM2020/) | 12/06/2020 | JavaFX | Tracé de fonction sur intervalle | IHM reconstituée à partir du sujet (analyse + tracé + quadrillage + axes) |
 | [`TestIHM2021`](TestIHM2021/) | 12/06/2021 | JavaFX | Problèmes arithmétiques + dessin de rectangles | 3 exercices |
-| [`TestIHM2022`](TestIHM2022/) | (BUT 1) | JavaFX | Wordle | Dernier test du module M2105, premier R2.02 |
+| [`TestIHM2022`](TestIHM2022/) | juin 2022 | JavaFX | Wordle | Premier test du BUT (R2.02 + R2.03), 2 sous-sujets dans le même repo |
 
 La bascule Swing → JavaFX dans le module s'est faite entre 2015 et 2016.
 
