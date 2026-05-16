@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>25</maven.compiler.release>
         <javafx.version>25.0.3</javafx.version>
-        <junit.jupiter.version>5.10.2</junit.jupiter.version>
+        <junit.jupiter.version>6.0.3</junit.jupiter.version>
         <testfx.version>4.0.18</testfx.version>
         <assertj.version>3.27.0</assertj.version>
     </properties>
