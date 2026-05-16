@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" width="120"/> Test d'IHM 2022 — Wordle
+# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" width="120"/> Test d'IHM 2022 : Wordle
 
 ### IUT d'Aix-Marseille - Département Informatique - BUT 1 (R2.02 + R2.03)
 

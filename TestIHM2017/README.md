@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" width="120"/> Test d'IHM 2017 — Taquin
+# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" width="120"/> Test d'IHM 2017 : Taquin
 
 ### IUT d'Aix-Marseille - Département Informatique - DUT (Module M2105)
 

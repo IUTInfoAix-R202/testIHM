@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" width="120"/> Test d'IHM 2014 — Othello
+# <img src="https://raw.githubusercontent.com/IUTInfoAix-R202/.github/main/assets/logo.png" alt="class logo" width="120"/> Test d'IHM 2014 : Othello
 
 ### IUT d'Aix-Marseille - Département Informatique - DUT (Module M2105)
 
