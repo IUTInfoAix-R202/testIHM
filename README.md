@@ -15,7 +15,7 @@ L'archivage a été réalisé en mai 2026 dans le cadre de la refonte du module 
 | [`TestIHM2017`](TestIHM2017/) | 16/06/2017 | JavaFX | Taquin | |
 | [`TestIHM2018`](TestIHM2018/) | 09/06/2018 | JavaFX | Mastermind | |
 | [`TestIHM2019`](TestIHM2019/) | 08/06/2019 | JavaFX | Lights Out | |
-| [`TestIHM2020`](TestIHM2020/) | 12/06/2020 | JavaFX | Tracé de fonction sur intervalle | Squelette modèle uniquement, GUI à écrire par l'étudiant |
+| [`TestIHM2020`](TestIHM2020/) | 12/06/2020 | JavaFX | Tracé de fonction sur intervalle | IHM reconstituée à partir du sujet (analyse + tracé + quadrillage + axes) |
 | [`TestIHM2021`](TestIHM2021/) | 12/06/2021 | JavaFX | Problèmes arithmétiques + dessin de rectangles | 3 exercices, **version solution** conservée |
 | [`TestIHM2022`](TestIHM2022/) | (BUT 1) | JavaFX | Wordle | Dernier test du module M2105, premier R2.02 |
 
@@ -42,7 +42,6 @@ Compilation et lancement (depuis le dossier d'un test) :
 Quelques particularités :
 
 - `TestIHM2013` et `TestIHM2014` (Swing) utilisent `exec-maven-plugin` au lieu de `javafx-maven-plugin`.
-- `TestIHM2020` est un squelette modèle uniquement (l'étudiant écrivait la GUI) - compile mais n'a pas de GUI à lancer.
 - `TestIHM2022` requiert Ikonli (icônes FontAwesome + Typicons).
 
 ## Provenance
