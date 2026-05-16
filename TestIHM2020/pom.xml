@@ -42,6 +42,24 @@
             <version>5.10.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.27.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-core</artifactId>
+            <version>4.0.18</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-junit5</artifactId>
+            <version>4.0.18</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -64,6 +82,19 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>fr.univ_amu.iut.TestIHM2020/fr.univ_amu.iut.ihm.TraceurDeFonction</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
+                <configuration>
+                    <!-- TestFX exige le mode classpath (pas module-path) -->
+                    <useModulePath>false</useModulePath>
+                    <argLine>
+                        --enable-native-access=ALL-UNNAMED
+                        --add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+                    </argLine>
                 </configuration>
             </plugin>
         </plugins>
