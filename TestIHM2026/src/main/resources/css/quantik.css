@@ -1,0 +1,73 @@
+/* Feuille de style de l'application Quantik (sujet R2.02). */
+
+.racine {
+  -fx-background-color: #ecf0f1;
+  -fx-padding: 16;
+}
+
+.barre-haut {
+  -fx-padding: 10 0 16 0;
+}
+
+.statut {
+  -fx-font-size: 18px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #2c3e50;
+}
+
+.pool {
+  -fx-padding: 10;
+  -fx-min-width: 110;
+}
+
+/* Une vignette de reserve : une case cliquable contenant une forme. */
+.vignette {
+  -fx-min-width: 60;
+  -fx-min-height: 60;
+  -fx-background-color: white;
+  -fx-background-radius: 8;
+  -fx-border-color: #bdc3c7;
+  -fx-border-width: 2;
+  -fx-border-radius: 8;
+  -fx-cursor: hand;
+}
+
+/* Vignette selectionnee : la forme choisie par le joueur courant. */
+.vignette:selectionne {
+  -fx-border-color: #e67e22;
+  -fx-border-width: 3;
+  -fx-effect: dropshadow(gaussian, #e67e22, 8, 0.4, 0, 0);
+}
+
+.plateau {
+  -fx-background-color: #34495e;
+  -fx-padding: 4;
+  -fx-hgap: 0;
+  -fx-vgap: 0;
+}
+
+/* Une case vide du plateau. */
+.case-vide {
+  -fx-min-width: 70;
+  -fx-min-height: 70;
+  -fx-background-color: #f7f9fa;
+  -fx-border-color: #95a5a6;
+  -fx-border-width: 1;
+}
+
+/* Bordures epaisses internes pour materialiser les quatre zones 2x2. */
+.bordure-droite {
+  -fx-border-color: #95a5a6 #2c3e50 #95a5a6 #95a5a6;
+  -fx-border-width: 1 4 1 1;
+}
+
+.bordure-bas {
+  -fx-border-color: #95a5a6 #95a5a6 #2c3e50 #95a5a6;
+  -fx-border-width: 1 1 4 1;
+}
+
+/* Case centrale (1,1) : croisement des deux separations de zones. */
+.bordure-droite.bordure-bas {
+  -fx-border-color: #95a5a6 #2c3e50 #2c3e50 #95a5a6;
+  -fx-border-width: 1 4 4 1;
+}

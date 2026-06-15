@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+  Vue principale de Quantik (sujet R2.02).
+
+  Les conteneurs portent un fx:id : le controleur les remplit par programme
+  (les vignettes des reserves a gauche et a droite, la grille 4x4 au centre).
+-->
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="fr.univ_amu.iut.QuantikController"
+            styleClass="racine">
+  <top>
+    <HBox fx:id="barreHaut" styleClass="barre-haut" alignment="CENTER" spacing="20.0">
+      <children>
+        <Label fx:id="statutLabel" styleClass="statut" text="Au tour du joueur BLANC" />
+        <Button fx:id="nouvellePartieBouton" text="Nouvelle partie" />
+      </children>
+    </HBox>
+  </top>
+  <left>
+    <VBox fx:id="poolBlanc" styleClass="pool" alignment="TOP_CENTER" spacing="12.0" />
+  </left>
+  <right>
+    <VBox fx:id="poolNoir" styleClass="pool" alignment="TOP_CENTER" spacing="12.0" />
+  </right>
+  <center>
+    <GridPane fx:id="plateauGrid" styleClass="plateau" alignment="CENTER" />
+  </center>
+</BorderPane>
