@@ -18,7 +18,7 @@
             fx:controller="fr.univ_amu.iut.QuantikController"
             styleClass="racine">
   <top>
-    <HBox fx:id="barreHaut" styleClass="barre-haut" alignment="CENTER" spacing="20.0">
+    <HBox styleClass="barre-haut" alignment="CENTER" spacing="20.0">
       <children>
         <Label fx:id="statutLabel" styleClass="statut" text="Au tour du joueur BLANC" />
         <Button fx:id="nouvellePartieBouton" text="Nouvelle partie" />
