@@ -15,9 +15,9 @@ une forme sur une ligne, une colonne ou une zone qui contient déjà cette forme
 joueur). Gagne celui qui pose la pièce complétant une ligne, une colonne ou une zone réunissant les
 quatre formes différentes.
 
-L'IHM que vous allez réaliser ressemblera à ceci : une grille 4x4 au centre (avec des bordures
-épaisses pour séparer les quatre zones), la réserve du joueur BLANC à gauche, celle du joueur NOIR à
-droite, et un bandeau de statut en haut.
+L'IHM que vous allez réaliser ressemble à ceci : une grille 4x4 au centre (avec des bordures épaisses
+pour séparer les quatre zones), la réserve du joueur BLANC à gauche, celle du joueur NOIR à droite, et
+un bandeau de statut en haut.
 
 ![Apercu de l'application Quantik que vous allez realiser](src/main/resources/assets/quantik_screenshot.png)
 
@@ -31,11 +31,13 @@ livré dans le paquet `fr.univ_amu.iut.modele`. Les méthodes trop algorithmique
 
 L'application définit plusieurs types d'objets :
 
-- `QuantikMain` est l'application JavaFX qui charge la vue et affiche la fenêtre.
-- `quantikView.fxml` décrit la disposition de la vue (fournie, avec les `fx:id`).
-- `QuantikController` est le contrôleur associé à cette vue.
-- `QuantikViewModel` fait le lien entre le contrôleur et le modèle (fourni, voir ci-dessous).
 - `PieceRenderer` fabrique les formes JavaFX représentant les pièces.
+- `QuantikController` est le contrôleur associé à la vue `quantikView.fxml` (fournie, avec les `fx:id`).
+- `QuantikViewModel` fait le lien entre le contrôleur et le modèle (fourni, voir ci-dessous).
+- `QuantikMain` est l'application JavaFX qui charge la vue et affiche la fenêtre.
+
+Vous écrirez ces classes pas à pas, en commençant par les briques d'affichage et en terminant par
+l'application.
 
 #### Le modèle fourni (`fr.univ_amu.iut.modele`)
 
@@ -77,174 +79,155 @@ public class QuantikViewModel {
 }
 ```
 
-Votre travail consiste à construire la vue qui consomme ce ViewModel.
+---
+
+## Exercice 1 - Le rendu des pièces
+
+La classe `PieceRenderer` transforme une `Piece` du modèle en une forme JavaFX (`Shape`) que l'on
+pourra afficher.
+
+1. Écrire la méthode **statique** `Shape rendre(Piece piece)` avec un `switch` sur `piece.forme()` qui
+   renvoie un `Rectangle` (40x40) pour `CUBE`.
+
+   ```java
+   @Test
+   void leCubeEstUnRectangle() {
+       assertThat(PieceRenderer.rendre(new Piece(Forme.CUBE, Joueur.BLANC)))
+           .isInstanceOf(Rectangle.class);
+   }
+   ```
+
+2. Compléter le `switch` pour les autres formes : un `Circle` (rayon 20) pour `SPHERE`, une `Ellipse`
+   (rayons 20 et 13) pour `CYLINDRE`, un `Polygon` triangulaire pour `CONE`.
+
+   ```java
+   @Test
+   void laSphereEstUnCercle() {
+       assertThat(PieceRenderer.rendre(new Piece(Forme.SPHERE, Joueur.BLANC)))
+           .isInstanceOf(Circle.class);
+   }
+   ```
+
+3. Colorer la pièce selon son propriétaire : remplissage `Color.LIGHTBLUE` pour `BLANC`,
+   `Color.LIGHTCORAL` pour `NOIR` (méthode `setFill`).
+
+   ```java
+   @Test
+   void unePieceNoireEstColoreeEnRougeClair() {
+       assertThat(PieceRenderer.rendre(new Piece(Forme.CUBE, Joueur.NOIR)).getFill())
+           .isEqualTo(Color.LIGHTCORAL);
+   }
+   ```
+
+4. Ajouter un contour à la forme (`setStroke`, `setStrokeWidth`).
+
+5. Ajouter à la forme la classe CSS `"piece"` (via `getStyleClass().add(...)`).
 
 ---
 
-## Partie A - Démarrage de l'application
+## Exercice 2 - Le contrôleur et le plateau
 
-### Exercice 1 - La classe `QuantikMain`
+Le `QuantikController` est le contrôleur de la vue. La grille `plateauGrid` et les autres conteneurs
+sont déclarés dans `quantikView.fxml` et injectés par leur `fx:id`.
 
-Écrire la méthode `public void start(Stage primaryStage)` de la classe `QuantikMain` (qui étend
-`Application`). Elle devra :
+1. Déclarer les champs `@FXML` correspondant aux `fx:id` de la vue : `Label statutLabel`, `Button
+   nouvellePartieBouton`, `VBox poolBlanc`, `VBox poolNoir`, `GridPane plateauGrid`. Déclarer aussi le
+   champ `private final QuantikViewModel viewModel = new QuantikViewModel();` et un tableau
+   `StackPane[4][4] cases`.
 
-1. créer un `FXMLLoader` sur la ressource `/fxml/quantikView.fxml` et charger la racine de la vue ;
-2. créer une `Scene` à partir de cette racine (par exemple 720x560) ;
-3. ajouter la feuille de style `/css/quantik.css` à la scène ;
-4. donner le titre `"Quantik"` à la fenêtre, lui associer la scène et l'afficher.
+2. Écrire la méthode `construirePlateau()` qui crée 16 cases (un `StackPane` de classe CSS `"case-vide"`
+   chacune), les mémorise dans `cases` et les ajoute à la grille avec `plateauGrid.add(cellule, colonne,
+   ligne)`.
 
-Écrire aussi la méthode `main` la plus réduite possible pour lancer l'application.
+3. Ajouter aux cases les classes CSS qui dessinent les zones : `"bordure-droite"` pour les cases de la
+   colonne d'indice 1, `"bordure-bas"` pour celles de la ligne d'indice 1. Écrire les règles
+   correspondantes dans `quantik.css` (une bordure épaisse, par exemple 4px, du côté de la zone).
 
-### Exercice 2 - Le contrôleur `QuantikController`
+4. Faire réagir un clic sur une case : appeler `viewModel.jouerEn(ligne, colonne)`.
 
-1. Déclarer dans `QuantikController` les champs `@FXML` correspondant aux `fx:id` de la vue : le
-   `Label statutLabel`, le `Button nouvellePartieBouton`, les deux `VBox poolBlanc` et `poolNoir`, et
-   la `GridPane plateauGrid`.
+5. Écrire la méthode `rafraichirPlateau()` qui, pour chaque case, vide son contenu puis, si
+   `viewModel.pieceEn(ligne, colonne)` n'est pas `null`, y ajoute `PieceRenderer.rendre(piece)`.
 
-2. Écrire la méthode `@FXML private void initialize()`. Pour l'instant, elle se contente de **lier**
-   le texte du label de statut à la propriété du ViewModel, et de brancher le bouton "Nouvelle
-   partie" :
+6. Si `jouerEn` renvoie `false` (coup interdit), donner un retour visuel sur la case : afficher
+   brièvement un voile rouge semi-transparent (un `Rectangle` de couleur `Color.color(0.9, 0.2, 0.2,
+   0.5)`) retiré après un court délai via une `PauseTransition`.
+
+---
+
+## Exercice 3 - Les réserves cliquables
+
+Les deux réserves (`poolBlanc` et `poolNoir`) affichent les pièces disponibles et permettent de choisir
+la forme à jouer.
+
+1. Écrire la méthode `construireReserves()` qui, pour chaque joueur, ajoute dans sa `VBox` un libellé
+   ("BLANC" / "NOIR") puis une **vignette** par forme.
+
+2. Écrire une méthode `vignetteReserve(Joueur joueur, Forme forme)` qui crée la vignette : un
+   `StackPane` de classe CSS `"vignette"` contenant `PieceRenderer.rendre(new Piece(forme, joueur))`.
+
+3. Faire en sorte qu'un clic sur une vignette de la réserve du **joueur courant** appelle
+   `viewModel.selectionner(forme)`.
+
+4. Surligner la vignette sélectionnée à l'aide d'une **pseudo-classe CSS** `:selectionne` (par exemple
+   un contour orange). On rappelle l'API :
+
+   ```java
+   private static final PseudoClass SELECTIONNE = PseudoClass.getPseudoClass("selectionne");
+   // ...
+   vignette.pseudoClassStateChanged(SELECTIONNE, estSelectionnee);
+   ```
+
+5. Écrire la méthode `rafraichirReserves()` qui, pour chaque vignette, réduit l'opacité à `0.3` et la
+   désactive quand `viewModel.compte(joueur, forme) == 0`, et applique le surlignage de l'étape 4.
+
+---
+
+## Exercice 4 - L'assemblage du contrôleur
+
+C'est la méthode `@FXML private void initialize()` qui réunit tout ce qui précède (comme un
+constructeur). On écrit donc cette méthode **après** les briques des exercices 2 et 3.
+
+1. Dans `initialize()`, lier le texte du statut au ViewModel et brancher le bouton :
 
    ```java
    statutLabel.textProperty().bind(viewModel.statutProperty());
    nouvellePartieBouton.setOnAction(event -> viewModel.nouvellePartie());
    ```
 
-   (Le ViewModel est un champ : `private final QuantikViewModel viewModel = new QuantikViewModel();`.)
+2. Toujours dans `initialize()`, appeler `construirePlateau()` et `construireReserves()`.
+
+3. Écrire la méthode `annoncerFin()` qui affiche une `Alert` (type `INFORMATION`) dont l'en-tête est
+   `viewModel.messageFin()`.
+
+4. Dans `initialize()`, écouter `viewModel.nombreCoupsProperty()` : à chaque changement, appeler
+   `rafraichirPlateau()` et `rafraichirReserves()`. Appeler aussi ces deux méthodes une fois à la fin de
+   `initialize()` pour l'affichage initial.
+
+5. Dans `initialize()`, écouter `viewModel.etatProperty()` : si `viewModel.estTerminee()`, appeler
+   `annoncerFin()`.
 
 ---
 
-## Partie B - Le rendu d'une pièce
+## Exercice 5 - L'application
 
-### Exercice 3 - La classe `PieceRenderer`
+La classe `QuantikMain` (qui étend `Application`) est le programme principal. C'est la **dernière**
+classe à écrire : elle charge la vue et affiche la fenêtre.
 
-Écrire la méthode **statique** `Shape rendre(Piece piece)` qui construit la forme JavaFX représentant
-une pièce. On associe une classe de forme JavaFX différente à chaque `Forme` :
+1. Écrire `public void start(Stage primaryStage)` : créer un `FXMLLoader` sur la ressource
+   `/fxml/quantikView.fxml` et charger la racine de la vue.
 
-| Forme      | Forme JavaFX                              |
-|------------|-------------------------------------------|
-| `CUBE`     | `Rectangle` (40x40)                        |
-| `SPHERE`   | `Circle` (rayon 20)                        |
-| `CYLINDRE` | `Ellipse` (rayons 20 et 13)                |
-| `CONE`     | `Polygon` triangulaire                     |
+2. Créer une `Scene` à partir de cette racine (par exemple 720x560) et lui ajouter la feuille de style
+   `/css/quantik.css`.
 
-On utilisera un `switch` sur `piece.forme()`. Les tests suivants doivent passer :
+3. Donner le titre `"Quantik"` à la fenêtre, lui associer la scène et l'afficher.
 
-```java
-@Test
-void leCubeEstUnRectangle() {
-    assertThat(PieceRenderer.rendre(new Piece(Forme.CUBE, Joueur.BLANC)))
-        .isInstanceOf(Rectangle.class);
-}
-
-@Test
-void laSphereEstUnCercle() {
-    assertThat(PieceRenderer.rendre(new Piece(Forme.SPHERE, Joueur.BLANC)))
-        .isInstanceOf(Circle.class);
-}
-```
-
-### Exercice 4 - La couleur des pièces
-
-Compléter `rendre` pour colorer la pièce selon son propriétaire : remplissage **bleu clair**
-(`Color.LIGHTBLUE`) pour le joueur `BLANC`, **rouge clair** (`Color.LIGHTCORAL`) pour le joueur
-`NOIR`. Ajouter un contour (`setStroke`, `setStrokeWidth`) et la classe CSS `"piece"`.
-
-```java
-@Test
-void unePieceNoireEstColoreeEnRougeClair() {
-    assertThat(PieceRenderer.rendre(new Piece(Forme.CUBE, Joueur.NOIR)).getFill())
-        .isEqualTo(Color.LIGHTCORAL);
-}
-```
-
----
-
-## Partie C - Les réserves cliquables
-
-### Exercice 5 - Afficher les réserves
-
-Dans le contrôleur, écrire une méthode `construireReserves()` (appelée depuis `initialize`) qui, pour
-chaque joueur, ajoute dans la `VBox` correspondante un libellé ("BLANC" / "NOIR") puis une
-**vignette** par forme. Une vignette est un `StackPane` (classe CSS `"vignette"`) contenant la forme
-obtenue via `PieceRenderer.rendre(new Piece(forme, joueur))`.
-
-### Exercice 6 - Sélectionner une forme
-
-Faire en sorte qu'un clic sur une vignette de la réserve du **joueur courant** appelle
-`viewModel.selectionner(forme)`. Matérialiser la vignette sélectionnée avec une **pseudo-classe CSS**
-`:selectionne` (par exemple un contour orange). On rappelle l'API des pseudo-classes :
-
-```java
-private static final PseudoClass SELECTIONNE = PseudoClass.getPseudoClass("selectionne");
-// ...
-vignette.pseudoClassStateChanged(SELECTIONNE, estSelectionnee);
-```
-
-### Exercice 7 - Griser les formes épuisées
-
-Quand une forme n'a plus de pièce pour un joueur (`viewModel.compte(joueur, forme) == 0`), réduire
-l'opacité de sa vignette à `0.3` et la désactiver (`setDisable(true)`).
-
----
-
-## Partie D - Le plateau interactif
-
-### Exercice 8 - Construire la grille
-
-Écrire une méthode `construirePlateau()` qui crée 16 cases (un `StackPane` de classe CSS
-`"case-vide"` par case) et les ajoute à `plateauGrid` avec `plateauGrid.add(cellule, colonne, ligne)`.
-Conserver les cases dans un tableau `StackPane[4][4]` pour pouvoir les redessiner.
-
-### Exercice 9 - Matérialiser les quatre zones
-
-Ajouter aux cases les classes CSS qui dessinent les séparations de zones : une bordure épaisse à
-**droite** des cases de la colonne d'indice 1, et une bordure épaisse en **bas** des cases de la ligne
-d'indice 1. Écrire dans `quantik.css` les règles `.bordure-droite` et `.bordure-bas` correspondantes
-(par exemple une bordure de 4px côté zone).
-
-### Exercice 10 - Jouer en cliquant
-
-Au clic sur une case `(ligne, colonne)`, appeler `viewModel.jouerEn(ligne, colonne)`. Pour redessiner
-le plateau après chaque coup, écouter la propriété `nombreCoupsProperty()` du ViewModel et, dans
-l'écouteur, vider chaque case puis y placer `PieceRenderer.rendre(piece)` si `viewModel.pieceEn(...)`
-n'est pas `null`.
-
-### Exercice 11 - Signaler un coup invalide
-
-Si `jouerEn` renvoie `false` (coup interdit), donner un retour visuel sur la case : par exemple
-afficher brièvement un voile rouge semi-transparent (`Rectangle` avec une couleur `Color.color(0.9,
-0.2, 0.2, 0.5)`) que l'on retire après un court délai à l'aide d'une `PauseTransition`.
-
----
-
-## Partie E - Statut et fin de partie
-
-### Exercice 12 - Le bandeau de statut
-
-Le label de statut est déjà lié au ViewModel (exercice 2). Vérifier qu'il affiche bien "Au tour du
-joueur BLANC" au démarrage, puis "Au tour du joueur NOIR" après un premier coup.
-
-### Exercice 13 - Annoncer la victoire
-
-Écouter la propriété `etatProperty()` ; lorsque `viewModel.estTerminee()` devient vrai, afficher une
-`Alert` (type `INFORMATION`) dont l'en-tête est `viewModel.messageFin()` et qui invite à recommencer.
-
----
-
-## Partie F - Nouvelle partie
-
-### Exercice 14 - Rejouer
-
-Le bouton "Nouvelle partie" appelle déjà `viewModel.nouvellePartie()` (exercice 2). Vérifier qu'un
-clic réinitialise le plateau et les réserves dans l'affichage (l'écouteur de `nombreCoupsProperty`
-s'en charge si vous l'avez branché correctement).
+4. Écrire la méthode `main` la plus réduite possible pour lancer l'application (`launch(args);`).
 
 ---
 
 ## Bonus
 
-- **Bonus 1 (MVVM)** : quand une forme est sélectionnée, prévisualiser les cases jouables en les
-  teintant de vert transparent, en s'appuyant sur `viewModel.casesValidesPour(forme)`. C'est une
-  vraie démonstration de MVVM : la vue ne fait que **refléter** un état calculé par le modèle.
+- **Bonus 1 (MVVM)** : quand une forme est sélectionnée, prévisualiser les cases jouables en les teintant
+  de vert transparent, en s'appuyant sur `viewModel.casesValidesPour(forme)`. La vue ne fait que
+  **refléter** un état calculé par le modèle.
 - **Bonus 2** : surligner l'alignement gagnant en fin de partie.
