@@ -83,27 +83,55 @@ public class QuantikViewModel {
 ## Exercice 1 - La structure du contrôleur
 
 On commence par poser le squelette du contrôleur. La vue `quantikView.fxml` est fournie : ses
-composants portent déjà un `fx:id`, il suffit de déclarer les champs correspondants.
+composants portent déjà un `fx:id`, il suffit de déclarer les champs correspondants. La voici :
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="fr.univ_amu.iut.QuantikController"
+            styleClass="racine">
+  <top>
+    <HBox styleClass="barre-haut" alignment="CENTER" spacing="20.0">
+      <children>
+        <Label fx:id="statutLabel" styleClass="statut" text="Au tour du joueur BLANC" />
+        <Button fx:id="nouvellePartieBouton" text="Nouvelle partie" />
+      </children>
+    </HBox>
+  </top>
+  <left>
+    <VBox fx:id="poolBlanc" styleClass="pool" alignment="TOP_CENTER" spacing="12.0" />
+  </left>
+  <right>
+    <VBox fx:id="poolNoir" styleClass="pool" alignment="TOP_CENTER" spacing="12.0" />
+  </right>
+  <center>
+    <GridPane fx:id="plateauGrid" styleClass="plateau" alignment="CENTER" />
+  </center>
+</BorderPane>
+```
 
 1. Écrire la déclaration de la classe publique `QuantikController`.
 
-2. Déclarer les champs `@FXML` correspondant aux `fx:id` de la vue :
+2. Déclarer les cinq champs `@FXML` correspondant aux `fx:id` de la vue : le label de statut
+   `statutLabel` (de type `Label`), le bouton `nouvellePartieBouton` (de type `Button`), les deux
+   réserves `poolBlanc` et `poolNoir` (de type `VBox`) et le plateau `plateauGrid` (de type
+   `GridPane`).
 
-   ```java
-   @FXML private Label statutLabel;
-   @FXML private Button nouvellePartieBouton;
-   @FXML private VBox poolBlanc;
-   @FXML private VBox poolNoir;
-   @FXML private GridPane plateauGrid;
-   ```
+3. Déclarer un champ `viewModel` de type `QuantikViewModel`, initialisé avec une nouvelle instance.
 
-3. Déclarer le champ qui relie le contrôleur au modèle :
-   `private final QuantikViewModel viewModel = new QuantikViewModel();`.
+4. Déclarer un tableau de `StackPane` à deux dimensions, de taille 4x4 et nommé `cases`, qui mémorisera
+   les cases du plateau.
 
-4. Déclarer un tableau `private final StackPane[][] cases = new StackPane[4][4];` qui mémorisera les
-   cases du plateau.
-
-5. Écrire une méthode `@FXML private void initialize()` vide pour l'instant (elle sera complétée au
+5. Écrire une méthode `initialize()` annotée `@FXML`, vide pour l'instant (elle sera complétée au
    dernier exercice).
 
 ---
@@ -208,12 +236,9 @@ la forme à jouer.
 On réunit enfin toutes les briques dans `initialize()` (comme un constructeur), puis on écrit la classe
 `QuantikMain`, qui est la **dernière** à réaliser.
 
-1. Dans `initialize()`, lier le texte du statut au ViewModel et brancher le bouton :
-
-   ```java
-   statutLabel.textProperty().bind(viewModel.statutProperty());
-   nouvellePartieBouton.setOnAction(event -> viewModel.nouvellePartie());
-   ```
+1. Dans `initialize()`, lier le texte du label de statut (`statutLabel`) à la propriété
+   `statutProperty()` du ViewModel, et faire en sorte qu'un clic sur le bouton « Nouvelle partie »
+   appelle `viewModel.nouvellePartie()`.
 
 2. Toujours dans `initialize()`, appeler `construirePlateau()` et `construireReserves()`.
 
