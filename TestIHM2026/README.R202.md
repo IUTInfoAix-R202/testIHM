@@ -31,12 +31,12 @@ livré dans le paquet `fr.univ_amu.iut.modele`. Les méthodes trop algorithmique
 
 L'application définit plusieurs types d'objets :
 
-- `PieceRenderer` fabrique les formes JavaFX représentant les pièces.
 - `QuantikController` est le contrôleur associé à la vue `quantikView.fxml` (fournie, avec les `fx:id`).
+- `PieceRenderer` fabrique les formes JavaFX représentant les pièces.
 - `QuantikViewModel` fait le lien entre le contrôleur et le modèle (fourni, voir ci-dessous).
 - `QuantikMain` est l'application JavaFX qui charge la vue et affiche la fenêtre.
 
-Vous écrirez ces classes pas à pas, en commençant par les briques d'affichage et en terminant par
+Vous écrirez ces classes pas à pas, en commençant par la structure du contrôleur et en terminant par
 l'application.
 
 #### Le modèle fourni (`fr.univ_amu.iut.modele`)
@@ -80,7 +80,35 @@ public class QuantikViewModel {
 
 ---
 
-## Exercice 1 - Le rendu des pièces
+## Exercice 1 - La structure du contrôleur
+
+On commence par poser le squelette du contrôleur. La vue `quantikView.fxml` est fournie : ses
+composants portent déjà un `fx:id`, il suffit de déclarer les champs correspondants.
+
+1. Écrire la déclaration de la classe publique `QuantikController`.
+
+2. Déclarer les champs `@FXML` correspondant aux `fx:id` de la vue :
+
+   ```java
+   @FXML private Label statutLabel;
+   @FXML private Button nouvellePartieBouton;
+   @FXML private VBox poolBlanc;
+   @FXML private VBox poolNoir;
+   @FXML private GridPane plateauGrid;
+   ```
+
+3. Déclarer le champ qui relie le contrôleur au modèle :
+   `private final QuantikViewModel viewModel = new QuantikViewModel();`.
+
+4. Déclarer un tableau `private final StackPane[][] cases = new StackPane[4][4];` qui mémorisera les
+   cases du plateau.
+
+5. Écrire une méthode `@FXML private void initialize()` vide pour l'instant (elle sera complétée au
+   dernier exercice).
+
+---
+
+## Exercice 2 - Le rendu des pièces
 
 La classe `PieceRenderer` transforme une `Piece` du modèle en une forme JavaFX (`Shape`) que l'on
 pourra afficher.
@@ -124,36 +152,30 @@ pourra afficher.
 
 ---
 
-## Exercice 2 - Le contrôleur et le plateau
+## Exercice 3 - Le plateau
 
-Le `QuantikController` est le contrôleur de la vue. La grille `plateauGrid` et les autres conteneurs
-sont déclarés dans `quantikView.fxml` et injectés par leur `fx:id`.
+On construit la grille de jeu dans le conteneur `plateauGrid`.
 
-1. Déclarer les champs `@FXML` correspondant aux `fx:id` de la vue : `Label statutLabel`, `Button
-   nouvellePartieBouton`, `VBox poolBlanc`, `VBox poolNoir`, `GridPane plateauGrid`. Déclarer aussi le
-   champ `private final QuantikViewModel viewModel = new QuantikViewModel();` et un tableau
-   `StackPane[4][4] cases`.
-
-2. Écrire la méthode `construirePlateau()` qui crée 16 cases (un `StackPane` de classe CSS `"case-vide"`
+1. Écrire la méthode `construirePlateau()` qui crée 16 cases (un `StackPane` de classe CSS `"case-vide"`
    chacune), les mémorise dans `cases` et les ajoute à la grille avec `plateauGrid.add(cellule, colonne,
    ligne)`.
 
-3. Ajouter aux cases les classes CSS qui dessinent les zones : `"bordure-droite"` pour les cases de la
+2. Ajouter aux cases les classes CSS qui dessinent les zones : `"bordure-droite"` pour les cases de la
    colonne d'indice 1, `"bordure-bas"` pour celles de la ligne d'indice 1. Écrire les règles
    correspondantes dans `quantik.css` (une bordure épaisse, par exemple 4px, du côté de la zone).
 
-4. Faire réagir un clic sur une case : appeler `viewModel.jouerEn(ligne, colonne)`.
+3. Faire réagir un clic sur une case : appeler `viewModel.jouerEn(ligne, colonne)`.
 
-5. Écrire la méthode `rafraichirPlateau()` qui, pour chaque case, vide son contenu puis, si
+4. Écrire la méthode `rafraichirPlateau()` qui, pour chaque case, vide son contenu puis, si
    `viewModel.pieceEn(ligne, colonne)` n'est pas `null`, y ajoute `PieceRenderer.rendre(piece)`.
 
-6. Si `jouerEn` renvoie `false` (coup interdit), donner un retour visuel sur la case : afficher
+5. Si `jouerEn` renvoie `false` (coup interdit), donner un retour visuel sur la case : afficher
    brièvement un voile rouge semi-transparent (un `Rectangle` de couleur `Color.color(0.9, 0.2, 0.2,
    0.5)`) retiré après un court délai via une `PauseTransition`.
 
 ---
 
-## Exercice 3 - Les réserves cliquables
+## Exercice 4 - Les réserves cliquables
 
 Les deux réserves (`poolBlanc` et `poolNoir`) affichent les pièces disponibles et permettent de choisir
 la forme à jouer.
@@ -181,10 +203,10 @@ la forme à jouer.
 
 ---
 
-## Exercice 4 - L'assemblage du contrôleur
+## Exercice 5 - L'assemblage et l'application
 
-C'est la méthode `@FXML private void initialize()` qui réunit tout ce qui précède (comme un
-constructeur). On écrit donc cette méthode **après** les briques des exercices 2 et 3.
+On réunit enfin toutes les briques dans `initialize()` (comme un constructeur), puis on écrit la classe
+`QuantikMain`, qui est la **dernière** à réaliser.
 
 1. Dans `initialize()`, lier le texte du statut au ViewModel et brancher le bouton :
 
@@ -195,29 +217,16 @@ constructeur). On écrit donc cette méthode **après** les briques des exercice
 
 2. Toujours dans `initialize()`, appeler `construirePlateau()` et `construireReserves()`.
 
-3. Écrire la méthode `annoncerFin()` qui affiche une `Alert` (type `INFORMATION`) dont l'en-tête est
-   `viewModel.messageFin()`.
-
-4. Dans `initialize()`, écouter `viewModel.nombreCoupsProperty()` : à chaque changement, appeler
-   `rafraichirPlateau()` et `rafraichirReserves()`. Appeler aussi ces deux méthodes une fois à la fin de
+3. Dans `initialize()`, écouter `viewModel.nombreCoupsProperty()` : à chaque changement, appeler
+   `rafraichirPlateau()` et `rafraichirReserves()`. Appeler aussi ces deux méthodes une fois en fin de
    `initialize()` pour l'affichage initial.
 
-5. Dans `initialize()`, écouter `viewModel.etatProperty()` : si `viewModel.estTerminee()`, appeler
-   `annoncerFin()`.
+4. Écrire la méthode `annoncerFin()` (une `Alert` de type `INFORMATION` dont l'en-tête est
+   `viewModel.messageFin()`) et, dans `initialize()`, écouter `viewModel.etatProperty()` pour l'appeler
+   quand `viewModel.estTerminee()`.
 
----
+5. Écrire `QuantikMain.start(Stage primaryStage)` : charger `/fxml/quantikView.fxml` avec un
+   `FXMLLoader`, créer une `Scene` (par exemple 720x560), lui ajouter `/css/quantik.css`, donner le
+   titre `"Quantik"` à la fenêtre et l'afficher.
 
-## Exercice 5 - L'application
-
-La classe `QuantikMain` (qui étend `Application`) est le programme principal. C'est la **dernière**
-classe à écrire : elle charge la vue et affiche la fenêtre.
-
-1. Écrire `public void start(Stage primaryStage)` : créer un `FXMLLoader` sur la ressource
-   `/fxml/quantikView.fxml` et charger la racine de la vue.
-
-2. Créer une `Scene` à partir de cette racine (par exemple 720x560) et lui ajouter la feuille de style
-   `/css/quantik.css`.
-
-3. Donner le titre `"Quantik"` à la fenêtre, lui associer la scène et l'afficher.
-
-4. Écrire la méthode `main` la plus réduite possible pour lancer l'application (`launch(args);`).
+6. Écrire la méthode `main` la plus réduite possible pour lancer l'application (`launch(args);`).
