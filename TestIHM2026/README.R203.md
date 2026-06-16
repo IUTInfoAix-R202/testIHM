@@ -286,12 +286,3 @@ forme, int ligne, int colonne)` (tous deux donnés).
        assertThat(partie.etat()).isEqualTo(Etat.VICTOIRE_BLANC);
    }
    ```
-
----
-
-## Bonus
-
-- **Bonus 1** : écrire `Coup suggereCoupSauf(Coup interdit)` qui propose un coup légal au joueur courant
-  en évitant un coup donné.
-- **Bonus 2** : écrire `boolean estSymetrique()` qui indique si le plateau est symétrique par rapport à
-  son centre.

@@ -75,7 +75,6 @@ public class QuantikViewModel {
     boolean peutJouerEn(int ligne, int colonne);     // le coup est-il légal ?
     boolean jouerEn(int ligne, int colonne);         // jouer (renvoie false si illégal)
     void nouvellePartie();
-    Set<Coup> casesValidesPour(Forme forme);         // pour le bonus
 }
 ```
 
@@ -222,12 +221,3 @@ classe à écrire : elle charge la vue et affiche la fenêtre.
 3. Donner le titre `"Quantik"` à la fenêtre, lui associer la scène et l'afficher.
 
 4. Écrire la méthode `main` la plus réduite possible pour lancer l'application (`launch(args);`).
-
----
-
-## Bonus
-
-- **Bonus 1 (MVVM)** : quand une forme est sélectionnée, prévisualiser les cases jouables en les teintant
-  de vert transparent, en s'appuyant sur `viewModel.casesValidesPour(forme)`. La vue ne fait que
-  **refléter** un état calculé par le modèle.
-- **Bonus 2** : surligner l'alignement gagnant en fin de partie.
