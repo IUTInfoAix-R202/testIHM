@@ -53,26 +53,20 @@ La logique du jeu repose sur les types suivants, tous dans le paquet `fr.univ_am
 - une énumération `Forme` (les quatre formes) et une énumération `Joueur` (les deux joueurs) ;
 - un record `Piece` qui associe une forme à un propriétaire ;
 - une classe `Reserve` qui mémorise les pièces restantes d'un joueur ;
-- une classe `Plateau` qui gère la grille, les contraintes de pose et la détection de victoire ;
-- une classe `Partie` qui orchestre le déroulement (tour de jeu, fin de partie).
+- une classe `Plateau` qui gère la grille, les contraintes de pose et la détection de victoire.
 
 Vous écrirez ces classes pas à pas. Les tests sont écrits avec **JUnit 5** et **AssertJ**
 (`assertThat(...)`).
 
----
-
 ## Exercice 1 - Les pièces
 
-Une pièce est une **forme** appartenant à un **joueur**. Tous les types de ce sujet sont à créer dans
-le paquet `fr.univ_amu.iut.modele`.
+Une pièce est une **forme** appartenant à un **joueur**. Tous les types de ce sujet sont à créer dans le paquet `fr.univ_amu.iut.modele`.
 
-1. Écrire l'énumération publique `Forme` qui déclare, dans cet ordre, les quatre valeurs `CUBE`,
-   `SPHERE`, `CYLINDRE`, `CONE`.
+1. Écrire l'énumération publique `Forme` qui déclare, dans cet ordre, les quatre valeurs `CUBE`,`SPHERE`, `CYLINDRE`, `CONE`.
 
 2. Écrire l'énumération publique `Joueur` qui déclare les deux valeurs `BLANC` et `NOIR`.
 
-3. Ajouter à `Joueur` une méthode d'instance `public Joueur adversaire()` qui renvoie l'autre joueur
-   (`NOIR` pour `BLANC`, et `BLANC` pour `NOIR`). Elle doit valider le test suivant :
+3. Ajouter à `Joueur` une méthode d'instance `public Joueur adversaire()` qui renvoie l'autre joueur(`NOIR` pour `BLANC`, et `BLANC` pour `NOIR`). Elle doit valider le test suivant :
 
    ```java
    @Test
@@ -82,34 +76,16 @@ le paquet `fr.univ_amu.iut.modele`.
    }
    ```
 
-4. Écrire le record public `Piece` avec exactement deux composants, dans cet ordre : `Forme forme` et
-   `Joueur proprietaire`. (Un record fournit automatiquement le constructeur, les accesseurs `forme()`
-   et `proprietaire()`, ainsi que `equals`.)
+4. Écrire le record public `Piece` avec exactement deux composants, dans cet ordre : `Forme forme` et `Joueur proprietaire` (Rappel : un record fournit automatiquement le constructeur, les accesseurs `forme()` et `proprietaire()`, ainsi que `equals`).
 
-5. Vérifier que l'égalité du record fonctionne, avec le test suivant :
-
-   ```java
-   @Test
-   void deuxPiecesIdentiquesSontEgales() {
-       assertThat(new Piece(Forme.SPHERE, Joueur.NOIR))
-           .isEqualTo(new Piece(Forme.SPHERE, Joueur.NOIR));
-   }
-   ```
-
----
 
 ## Exercice 2 - La réserve
 
-La classe `Reserve` mémorise les pièces qu'il reste à un joueur. Au début de la partie, chaque joueur
-possède deux pièces de chaque forme.
+La classe `Reserve` mémorise les pièces qu'il reste à un joueur. Au début de la partie, chaque joueur possède deux pièces de chaque forme.
 
-1. Écrire la classe publique `Reserve` avec deux champs : le `Joueur proprietaire` et un `Map<Forme,
-   Integer> stock` (par exemple une `EnumMap<>(Forme.class)`). Écrire le constructeur `public
-   Reserve(Joueur proprietaire)` qui mémorise le propriétaire et, pour chaque valeur de
-   `Forme.values()`, range la valeur `2` dans `stock`.
+1. Écrire la classe publique `Reserve` avec deux champs : le `Joueur proprietaire` et un `Map<Forme,Integer> stock` (par exemple une `EnumMap<>(Forme.class)`). Écrire le constructeur `public Reserve(Joueur proprietaire)` qui mémorise le propriétaire et, pour chaque valeur de `Forme.values()`, range la valeur `2` dans `stock`.
 
-2. Écrire la méthode `public int compte(Forme forme)` qui renvoie le nombre de pièces restantes d'une
-   forme (la valeur associée à `forme` dans `stock`). Elle doit valider :
+2. Écrire la méthode `public int compte(Forme forme)` qui renvoie le nombre de pièces restantes d'une forme (la valeur associée à `forme` dans `stock`). Elle doit valider :
 
    ```java
    @Test
@@ -121,8 +97,7 @@ possède deux pièces de chaque forme.
    }
    ```
 
-3. Écrire la méthode `public Piece prendre(Forme forme)` qui décrémente de 1 le compte de `forme` dans
-   `stock` et renvoie `new Piece(forme, proprietaire)`. Elle doit valider :
+3. Écrire la méthode `public Piece prendre(Forme forme)` qui décrémente de 1 le compte de `forme` dans `stock` et renvoie `new Piece(forme, proprietaire)`. Elle doit valider :
 
    ```java
    @Test
@@ -133,8 +108,7 @@ possède deux pièces de chaque forme.
    }
    ```
 
-4. Compléter `prendre` : si le compte de `forme` est déjà `0`, lever une `IllegalArgumentException`
-   (sans rien modifier).
+4. Compléter `prendre` : si le compte de `forme` est déjà `0`, lever une `IllegalArgumentException` (sans rien modifier).
 
    ```java
    @Test
@@ -147,10 +121,8 @@ possède deux pièces de chaque forme.
    }
    ```
 
-5. Écrire la méthode `public boolean estVide()` qui renvoie `true` si toutes les formes ont un compte
-   de `0`.
+5. Écrire la méthode `public boolean estVide()` qui renvoie `true` si toutes les formes ont un compte de `0`.
 
----
 
 ## Exercice 3 - Le plateau et ses règles
 
@@ -193,8 +165,9 @@ Piece[TAILLE][TAILLE]`. C'est le cœur du sujet.
    ```
 
 4. Écrire la méthode `public boolean peutPoser(Forme forme, int ligne, int colonne)` : elle renvoie
-   `true` si la case est vide (`estVide`) **et** qu'aucune des trois méthodes de la question 3 ne
-   détecte la présence de `forme` (sur la ligne, sur la colonne, dans la zone).
+   `true` si la case est vide (`estVide`) **et** qu'aucune des trois méthodes de présence (celle fournie
+   pour la ligne, et celles de la question 3 pour la colonne et la zone) ne détecte la présence de
+   `forme`.
 
    ```java
    @Test
@@ -235,76 +208,5 @@ Piece[TAILLE][TAILLE]`. C'est le cœur du sujet.
        plateau.poser(new Piece(Forme.CYLINDRE, Joueur.BLANC), 0, 2);
        plateau.poser(new Piece(Forme.CONE, Joueur.NOIR), 0, 3);
        assertThat(plateau.estVictoireApres(0, 3)).isTrue();
-   }
-   ```
-
----
-
-## Exercice 4 - Le déroulement de la partie
-
-La classe `Partie` réunit un `Plateau`, deux `Reserve` (une par joueur), le joueur courant et un état.
-On dispose de l'énumération `Etat { EN_COURS, VICTOIRE_BLANC, VICTOIRE_NOIR }` et du record `Coup(Forme
-forme, int ligne, int colonne)` (tous deux donnés).
-
-1. Écrire la classe `Partie` avec ses champs : un `Plateau`, une `Reserve` par joueur (par exemple un
-   `Map<Joueur, Reserve>`), un champ `Joueur joueurCourant` et un champ `Etat etat`. Le constructeur
-   crée un plateau vide, une réserve pleine pour chaque joueur, fixe `joueurCourant` à `BLANC` et `etat`
-   à `EN_COURS`. Écrire les accesseurs `public Plateau plateau()`, `public Joueur joueurCourant()`,
-   `public Etat etat()` et `public Reserve reserve(Joueur joueur)`.
-
-   ```java
-   @Test
-   void uneNouvellePartieEstEnCoursEtCEstAuBlancDeJouer() {
-       Partie partie = new Partie();
-       assertThat(partie.etat()).isEqualTo(Etat.EN_COURS);
-       assertThat(partie.joueurCourant()).isEqualTo(Joueur.BLANC);
-   }
-   ```
-
-2. Écrire la méthode `public List<Coup> coupsPossibles(Joueur joueur)` : pour chaque `Forme` dont la
-   réserve du `joueur` a un compte > 0, et pour chaque case `(ligne, colonne)` où `plateau().peutPoser(...)`
-   est vrai, ajouter `new Coup(forme, ligne, colonne)` à la liste résultat.
-
-   ```java
-   @Test
-   void surUnPlateauVideIlYaSoixanteQuatreCoupsPossibles() {
-       assertThat(new Partie().coupsPossibles(Joueur.BLANC)).hasSize(64); // 4 formes x 16 cases
-   }
-   ```
-
-3. Écrire le début de la méthode `public void jouer(Forme forme, int ligne, int colonne)` (elle fait
-   jouer le joueur courant), dans cet ordre : lever une `IllegalStateException` si `etat` n'est pas
-   `EN_COURS` ; lever une `IllegalArgumentException` si la réserve du joueur courant n'a plus cette
-   forme **ou** si `peutPoser(...)` est faux ; sinon, prendre la pièce dans la réserve du joueur courant
-   (`prendre`) et la poser sur le plateau (`poser`).
-
-4. Compléter `jouer` : juste après la pose, si `estVictoireApres(ligne, colonne)` est vrai, mettre
-   `etat` à la victoire du joueur courant (`VICTOIRE_BLANC` ou `VICTOIRE_NOIR`) et terminer la méthode.
-
-5. Compléter `jouer` : sinon, si `coupsPossibles(adversaire)` est vide, le joueur courant gagne
-   également (l'adversaire est bloqué) ; dans tous les autres cas, donner la main à l'adversaire
-   (`joueurCourant = joueurCourant.adversaire()`).
-
-   ```java
-   @Test
-   void jouerUnCoupNonDecisifPasseLaMain() {
-       Partie partie = new Partie();
-       partie.jouer(Forme.CUBE, 0, 0);
-       assertThat(partie.joueurCourant()).isEqualTo(Joueur.NOIR);
-   }
-   ```
-
-6. Écrire un test d'intégration qui enchaîne une partie gagnante et vérifie l'état final :
-
-   ```java
-   @Test
-   void leBlancGagneEnCompletantLaLigneZero() {
-       Partie partie = new Partie();
-       partie.jouer(Forme.CUBE, 0, 0);     // BLANC
-       partie.jouer(Forme.SPHERE, 0, 1);   // NOIR
-       partie.jouer(Forme.CYLINDRE, 0, 2); // BLANC
-       partie.jouer(Forme.CUBE, 3, 3);     // NOIR (coup neutre)
-       partie.jouer(Forme.CONE, 0, 3);     // BLANC complète la ligne 0
-       assertThat(partie.etat()).isEqualTo(Etat.VICTOIRE_BLANC);
    }
    ```
