@@ -9,19 +9,19 @@
 #     pour qu'ils ne soient jamais coupes en bas de page (ils basculent entiers
 #     sur la page suivante si la place manque).
 #
-# Lancer depuis n'importe ou. Sortie : build/pdf/.
+# Lancer depuis n'importe ou. Sortie : pdf/ (versionnee ; build/ sert aux fichiers temporaires).
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
-mkdir -p build/pdf
+mkdir -p pdf build
 
 preprocess() { # $1 = md source, $2 = md temporaire
   python3 "$ROOT/outils/preparer-md.py" "$1" "$2"
 }
 
 build() { # $1 = md source, $2 = pdf de sortie
-  local tmp="build/pdf/.$(basename "$1").tmp.md"
+  local tmp="build/.$(basename "$1").tmp.md"
   preprocess "$1" "$tmp"
   pandoc "$tmp" \
     --from gfm+raw_attribute \
@@ -30,10 +30,10 @@ build() { # $1 = md source, $2 = pdf de sortie
     -V geometry:margin=2cm \
     -V fontsize=11pt \
     -V colorlinks=true -V linkcolor=blue -V urlcolor=blue \
-    -V header-includes='\usepackage{graphicx}\usepackage{needspace}\setkeys{Gin}{width=0.7\linewidth,keepaspectratio}' \
-    -o "build/pdf/$2"
+    -V header-includes='\usepackage{graphicx}\usepackage{needspace}\usepackage{etoolbox}\setkeys{Gin}{width=0.7\linewidth,keepaspectratio}\AtBeginDocument{\BeforeBeginEnvironment{Shaded}{\begin{minipage}{\linewidth}}\AfterEndEnvironment{Shaded}{\end{minipage}}}' \
+    -o "pdf/$2"
   rm -f "$tmp"
-  echo "OK -> build/pdf/$2"
+  echo "OK -> pdf/$2"
 }
 
 build README.R203.md TestIHM2026-R203.pdf

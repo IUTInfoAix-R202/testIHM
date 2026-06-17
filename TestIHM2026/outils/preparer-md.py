@@ -31,10 +31,10 @@ def main():
     texte = open(src, encoding="utf-8").read()
     # NB : remplacements via lambda pour que re.sub ne reinterprete pas les
     # antislashs du LaTeX (\n, \b...) dans la chaine de remplacement.
+    # Le tableau des zones est une vraie table (pas un bloc de code) : on le
+    # protege d'une coupure avec \needspace. Les blocs de code, eux, sont rendus
+    # insecables globalement par le preambule LaTeX (cf. outils/generer-pdf.sh).
     texte = re.sub(r"```mermaid.*?```", lambda m: needspace(12) + TABLEAU_ZONES, texte, flags=re.S)
-    texte = re.sub(
-        r"```xml\n.*?\n```", lambda m: needspace(34) + m.group(0), texte, count=1, flags=re.S
-    )
     open(dst, "w", encoding="utf-8").write(texte)
 
 
