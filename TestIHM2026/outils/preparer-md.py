@@ -34,7 +34,7 @@ def main():
     # Le tableau des zones est une vraie table (pas un bloc de code) : on le
     # protege d'une coupure avec \needspace. Les blocs de code, eux, sont rendus
     # insecables globalement par le preambule LaTeX (cf. outils/generer-pdf.sh).
-    texte = re.sub(r"```mermaid.*?```", lambda m: needspace(12) + TABLEAU_ZONES, texte, flags=re.S)
+    texte = re.sub(r"```mermaid.*?```", lambda m: TABLEAU_ZONES, texte, flags=re.S)
     open(dst, "w", encoding="utf-8").write(texte)
 
 
