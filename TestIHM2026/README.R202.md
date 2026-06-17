@@ -61,7 +61,6 @@ public class QuantikViewModel {
     ReadOnlyObjectProperty<Joueur> joueurCourantProperty();
     ReadOnlyObjectProperty<Etat> etatProperty();
     ReadOnlyIntegerProperty nombreCoupsProperty();  // change à chaque coup joué
-
     // Lecture de l'état
     Piece pieceEn(int ligne, int colonne);          // la pièce d'une case, ou null
     int compte(Joueur joueur, Forme forme);         // pièces restantes d'un joueur
@@ -69,7 +68,6 @@ public class QuantikViewModel {
     Forme formeSelectionnee();                       // forme choisie, ou null
     boolean estTerminee();
     String messageFin();                             // ex. "Victoire du joueur BLANC !"
-
     // Actions
     void selectionner(Forme forme);                  // choisir une forme à poser
     boolean peutJouerEn(int ligne, int colonne);     // le coup est-il légal ?
@@ -82,12 +80,24 @@ public class QuantikViewModel {
 
 ## Exercice 1 - La structure du contrôleur
 
-Dans cet exercice, vous commencerez par poser le squelette du contrôleur. La vue `quantikView.fxml` est fournie (ses
-composants portent déjà un `fx:id`) :
+Dans cet exercice, vous commencerez par poser le squelette du contrôleur. La vue `quantikView.fxml` est fournie ci-après (ses composants portent déjà un `fx:id`).
+
+
+1. Écrire la déclaration de la classe publique `QuantikController`.
+
+2. Déclarer les cinq champs `@FXML` correspondant aux `fx:id` de la vue : le label de statut `statutLabel` (de type `Label`), le bouton `nouvellePartieBouton` (de type `Button`), les deux réserves `poolBlanc` et `poolNoir` (de type `VBox`) et le plateau `plateauGrid` (de type `GridPane`).
+
+3. Déclarer un champ `viewModel` de type `QuantikViewModel`, initialisé avec une nouvelle instance.
+
+4. Déclarer un tableau de `StackPane` à deux dimensions, de taille 4x4 et nommé `cases`, qui mémorisera les cases du plateau.
+
+5. Écrire une méthode `initialize()` annotée `@FXML`, vide pour l'instant (elle sera complétée plus tard).
 
 ```xml
-<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fr.univ_amu.iut.QuantikController" styleClass="racine">
+<BorderPane xmlns="http://javafx.com/javafx" 
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="fr.univ_amu.iut.QuantikController" 
+            styleClass="racine">
   <top>
     <HBox styleClass="barre-haut" alignment="CENTER" spacing="20.0">
       <children>
@@ -107,16 +117,6 @@ composants portent déjà un `fx:id`) :
   </center>
 </BorderPane>
 ```
-
-1. Écrire la déclaration de la classe publique `QuantikController`.
-
-2. Déclarer les cinq champs `@FXML` correspondant aux `fx:id` de la vue : le label de statut `statutLabel` (de type `Label`), le bouton `nouvellePartieBouton` (de type `Button`), les deux réserves `poolBlanc` et `poolNoir` (de type `VBox`) et le plateau `plateauGrid` (de type `GridPane`).
-
-3. Déclarer un champ `viewModel` de type `QuantikViewModel`, initialisé avec une nouvelle instance.
-
-4. Déclarer un tableau de `StackPane` à deux dimensions, de taille 4x4 et nommé `cases`, qui mémorisera les cases du plateau.
-
-5. Écrire une méthode `initialize()` annotée `@FXML`, vide pour l'instant (elle sera complétée plus tard).
 
 ## Exercice 2 - Le rendu des pièces
 

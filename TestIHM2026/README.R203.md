@@ -4,22 +4,16 @@
 
 L'objectif de ce sujet est la programmation de la **logique** du jeu **Quantik**.
 
-**Quantik** est un jeu de stratégie abstrait édité par Gigamic (auteur : Nouredine Hilal, 2019). Deux
+**Quantik** est un jeu de stratégie abstrait édité par Gigamic (Nouredine Hilal, 2019). Deux
 joueurs s'affrontent sur un plateau de 4x4 cases, découpé en quatre zones de 2x2 cases. Chaque joueur
 dispose de huit pièces : deux exemplaires de chacune des quatre formes (cube, sphère, cylindre, cône).
 
 ### Description du jeu
 
 Les joueurs posent à tour de rôle une de leurs pièces sur une case vide, en respectant **une seule
-règle de pose** :
+règle de pose** : Il est interdit de poser une forme sur une ligne, une colonne ou une zone qui contient déjà cette forme, **quel que soit le joueur** à qui appartient la pièce déjà en place.
 
-> Il est interdit de poser une forme sur une ligne, une colonne ou une zone qui contient déjà cette
-> forme, **quel que soit le joueur** à qui appartient la pièce déjà en place.
-
-La condition de victoire est tout aussi simple :
-
-> Gagne la partie le joueur qui **pose la pièce complétant** une ligne, une colonne ou une zone
-> contenant les **quatre formes différentes** (peu importe à qui appartiennent les quatre pièces).
+La condition de victoire est tout aussi simple : Gagne la partie le joueur qui **pose la pièce complétant** une ligne, une colonne ou une zone contenant les **quatre formes différentes** (peu importe à qui appartiennent les quatre pièces).
 
 Enfin, un joueur qui ne peut plus jouer (aucun coup légal possible) a perdu : son adversaire gagne.
 
@@ -27,7 +21,7 @@ L'interface graphique correspondante (réalisée dans le sujet R2.02) donne une 
 
 ![Apercu de l'application Quantik](src/main/resources/assets/quantik_screenshot.png)
 
-Le plateau est numéroté de la façon suivante (les indices de zone vont de 0 à 3) :
+Le plateau est découpé en zones qui sont numérotées de la façon suivante (les indices de zone vont de 0 à 3) :
 
 ```mermaid
 graph TD
@@ -176,7 +170,6 @@ Piece[TAILLE][TAILLE]`. C'est le cœur du sujet.
        plateau.poser(new Piece(Forme.CUBE, Joueur.BLANC), 0, 0);
        assertThat(plateau.peutPoser(Forme.CUBE, 0, 3)).isFalse();
    }
-
    @Test
    void onPeutPoserUneFormeDifferenteSurLaMemeLigne() {
        Plateau plateau = new Plateau();
