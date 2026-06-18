@@ -28,7 +28,6 @@
         <maven.shade.plugin.version>3.6.2</maven.shade.plugin.version>
         <spotless.maven.plugin.version>3.4.0</spotless.maven.plugin.version>
         <google.java.format.version>1.35.0</google.java.format.version>
-        <git.build.hook.plugin.version>3.6.0</git.build.hook.plugin.version>
 
         <!-- Test dependencies versions -->
         <junit.jupiter.version>6.0.3</junit.jupiter.version>
@@ -193,25 +192,6 @@
                         <endWithNewline/>
                     </java>
                 </configuration>
-            </plugin>
-
-            <!-- git-build-hook : configure core.hooksPath=.githooks au premier ./mvnw. -->
-            <plugin>
-                <groupId>com.rudikershaw.gitbuildhook</groupId>
-                <artifactId>git-build-hook-maven-plugin</artifactId>
-                <version>${git.build.hook.plugin.version}</version>
-                <configuration>
-                    <gitConfig>
-                        <core.hooksPath>.githooks</core.hooksPath>
-                    </gitConfig>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>configure</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
