@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <name>testIHM (parent + aggregator)</name>
-    <description>Archive des sujets de tests d'IHM 2013-2022 (M2105 / R2.02). Stack technique centralisée pour les 10 modules.</description>
+    <description>Archive des sujets de tests d'IHM 2013-2022 + sujet CC3 2026 (M2105 / R2.02). Stack technique centralisée pour les 11 modules.</description>
 
     <modules>
         <module>TestIHM2013</module>
@@ -23,6 +23,10 @@
         <module>TestIHM2020</module>
         <module>TestIHM2021</module>
         <module>TestIHM2022</module>
+        <!-- Sujet CC3 2026 (Quantik). Module agrege mais NON heritant : il garde son
+             propre pom autonome (JavaFX 26 + Headless Platform Gluon), incompatible
+             avec le JavaFX 25.0.3 du parent utilise par les modules d'archive. -->
+        <module>TestIHM2026</module>
     </modules>
 
     <properties>
