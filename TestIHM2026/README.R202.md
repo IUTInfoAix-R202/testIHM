@@ -87,9 +87,9 @@ Dans cet exercice, vous commencerez par poser le squelette du contrôleur. La vu
 
 2. Déclarer les cinq champs `@FXML` correspondant aux `fx:id` de la vue : le label de statut `statutLabel` (de type `Label`), le bouton `nouvellePartieBouton` (de type `Button`), les deux réserves `poolBlanc` et `poolNoir` (de type `VBox`) et le plateau `plateauGrid` (de type `GridPane`).
 
-3. Déclarer un champ `viewModel` de type `QuantikViewModel`, initialisé avec une nouvelle instance.
+3. Déclarer un champ `viewModel` de type `QuantikViewModel`, initialisé avec une nouvelle instance en utilisant le constructeur par défaut.
 
-4. Déclarer un tableau de `StackPane` à deux dimensions, de taille 4x4 et nommé `cases`, qui mémorisera les cases du plateau.
+4. Déclarer et intialiser un tableau de `StackPane` à deux dimensions, de taille 4x4 et nommé `cases`, qui mémorisera les cases du plateau.
 
 5. Écrire une méthode `initialize()` annotée `@FXML`, vide pour l'instant (elle sera complétée plus tard).
 
