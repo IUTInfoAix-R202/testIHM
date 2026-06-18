@@ -1,0 +1,9 @@
+# Force LF par défaut pour tous les fichiers texte
+* text=auto eol=lf
+
+# Scripts Windows : CRLF obligatoire
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Maven Wrapper : le script Unix doit rester en LF même sur un clone Windows
+mvnw text eol=lf
