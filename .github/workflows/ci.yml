@@ -28,6 +28,9 @@ jobs:
           - TestIHM2020
           - TestIHM2021
           - TestIHM2022
+          # Sujet CC3 2026 (Quantik). Pom autonome JavaFX 26 + Headless Platform :
+          # tourne sans serveur d'affichage, xvfb-run reste sans effet de bord.
+          - TestIHM2026
 
     steps:
       - name: Checkout

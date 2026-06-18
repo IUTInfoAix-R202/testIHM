@@ -6,6 +6,8 @@ Ce dépôt regroupe les sujets des **tests terminaux d'IHM Java** donnés entre 
 
 L'archivage a été réalisé en mai 2026 dans le cadre de la refonte du module **R2.02 - Développement d'applications avec IHM** (voir [`IUTInfoAix-R202`](https://github.com/IUTInfoAix-R202) - cours, TPs, syllabus).
 
+Depuis juin 2026, le dépôt héberge aussi le **sujet du CC3 2026** (`TestIHM2026`, jeu *Quantik*) : ce n'est pas un sujet historique mais la **correction de référence** du test terminal de l'année en cours, sur la stack la plus récente (JavaFX 26 + Headless Platform). Il a rejoint le dépôt en conservant son historique git propre (l'ancien dépôt autonome `IUTInfoAix-R202/TestIHM2026` est désormais archivé en lecture seule).
+
 ## Sujets archivés
 
 | Dossier | Date | GUI | Thème | Notes |
@@ -21,12 +23,13 @@ L'archivage a été réalisé en mai 2026 dans le cadre de la refonte du module 
 | [`TestIHM2020`](TestIHM2020/) | 12/06/2020 | JavaFX | Tracé de fonction sur intervalle | IHM reconstituée à partir du sujet (analyse + tracé + quadrillage + axes) |
 | [`TestIHM2021`](TestIHM2021/) | 12/06/2021 | JavaFX | Problèmes arithmétiques + dessin de rectangles | 3 exercices |
 | [`TestIHM2022`](TestIHM2022/) | juin 2022 | JavaFX | Wordle | Premier test du BUT (R2.02 + R2.03), 2 sous-sujets dans le même repo |
+| [`TestIHM2026`](TestIHM2026/) | 18/06/2026 | JavaFX 26 | Quantik (MVVM) | **Sujet CC3 2026 actif**, pas un sujet historique : correction de référence R2.02 + R2.03, 2 sous-sujets (`README.R202.md` / `README.R203.md`). Pom autonome JavaFX 26 + Headless |
 
 La bascule Swing → JavaFX dans le module s'est faite entre 2015 et 2016.
 
 ## Tests fonctionnels
 
-Chaque dossier embarque ses propres tests JUnit Jupiter + AssertJ (versions définies dans le `pom.xml` racine via `<dependencyManagement>`). Vérifiés en CI sous Xvfb (cf. badge ci-dessus).
+Chaque dossier embarque ses propres tests JUnit Jupiter + AssertJ (versions définies dans le `pom.xml` racine via `<dependencyManagement>`, sauf `TestIHM2026` qui est autonome). Vérifiés en CI sous Xvfb (cf. badge ci-dessus) ; `TestIHM2026` tourne via la *Headless Platform* Gluon de JavaFX 26 (sans serveur d'affichage), Xvfb ne lui sert que de filet.
 
 | Dossier | Tests | Couverture |
 |---|---:|---|
@@ -40,7 +43,8 @@ Chaque dossier embarque ses propres tests JUnit Jupiter + AssertJ (versions déf
 | [`TestIHM2020`](TestIHM2020/) | 13 | `Analyseur` + `CalculateurPointsFonction` + `TraceurDeFonction` |
 | [`TestIHM2021`](TestIHM2021/) | 6 | `Rectangle` (binding périmètre live) |
 | [`TestIHM2022`](TestIHM2022/) | 25 | `Dictionary` + `Game` + `Word` (Wordle complet) |
-| **Total** | **116** | tous verts en CI |
+| [`TestIHM2026`](TestIHM2026/) | 58 | modèle Quantik (`Plateau`, `Partie`, `Piece`, `Reserve`) + `QuantikViewModel` + `PieceRenderer` + smoke `QuantikAppTest` |
+| **Total** | **174** | tous verts en CI |
 
 Pattern adopté pour TestFX (apps JavaFX 2016+) : `Platform.startup` + `Platform.runLater` + `CountDownLatch` (modèle TP3 bonus 10), avec `button.fire()` plutôt que `robot.clickOn()` pour éviter le robot OS (peu fiable sur Wayland et certains environnements headless). Apps Swing (2013-2015) : `-Djava.awt.headless=true` + `JButton.doClick()`.
 
@@ -61,7 +65,7 @@ Pattern adopté pour TestFX (apps JavaFX 2016+) : `Platform.startup` + `Platform
 
 ## Stack technique
 
-Le dépôt est un **projet Maven multi-module** depuis 2026-05 : le `pom.xml` racine est à la fois agrégateur (`<modules>`) et parent (`<dependencyManagement>` + `<pluginManagement>`). Les 10 modules `TestIHM<année>` héritent et n'ont à déclarer ni versions, ni configurations de plugins. Stack homogène centralisée :
+Le dépôt est un **projet Maven multi-module** depuis 2026-05 : le `pom.xml` racine est à la fois agrégateur (`<modules>`) et parent (`<dependencyManagement>` + `<pluginManagement>`). Les **10 modules d'archive** `TestIHM2013`→`TestIHM2022` héritent du parent et n'ont à déclarer ni versions, ni configurations de plugins. Stack homogène centralisée :
 
 - **Java 25** (`maven.compiler.release=25`)
 - **JavaFX 25** pour les apps JavaFX (`javafx-controls` + `javafx-fxml` quand FXML utilisé)
@@ -72,7 +76,7 @@ Le dépôt est un **projet Maven multi-module** depuis 2026-05 : le `pom.xml` ra
 Compilation et lancement :
 
 ```bash
-./mvnw test                       # à la racine : teste les 10 modules d'un coup
+./mvnw test                       # à la racine : teste les 11 modules d'un coup
 ./mvnw -pl TestIHM2014 test       # à la racine : teste un seul module
 cd TestIHM2014 && ./mvnw test     # depuis un module : équivalent autonome
 cd TestIHM2016 && ./mvnw javafx:run   # lance l'app JavaFX (apps 2016+)
@@ -83,7 +87,8 @@ Quelques particularités :
 
 - `TestIHM2013`, `TestIHM2014` et `TestIHM2015` (Swing) utilisent `exec-maven-plugin` au lieu de `javafx-maven-plugin`.
 - `TestIHM2022` requiert Ikonli (icônes FontAwesome + Typicons), déclaré aussi dans le `dependencyManagement` racine.
-- Le bump d'une dépendance (Java, JavaFX, JUnit...) se fait dans **un seul endroit** : le `<properties>` du `pom.xml` racine.
+- `TestIHM2026` est le **11e module, agrégé mais NON héritant** : il garde son propre pom autonome (**JavaFX 26 + Headless Platform Gluon**, Mockito, ApprovalTests, Spotless), car la Headless Platform n'existe qu'en JavaFX 26 et serait cassée par le JavaFX 25.0.3 du parent. Ses versions ne sont donc pas centralisées dans le `pom.xml` racine.
+- Le bump d'une dépendance (Java, JavaFX, JUnit...) des modules d'archive se fait dans **un seul endroit** : le `<properties>` du `pom.xml` racine (`TestIHM2026` se met à jour séparément, dans son propre pom).
 
 ## Provenance
 
