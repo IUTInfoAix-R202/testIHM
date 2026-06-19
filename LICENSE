@@ -20,11 +20,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-Note historique : les dossiers TestIHM2013, TestIHM2014 et TestIHM2015 portent
-chacun leur propre fichier LICENSE issu de l'epoque (les contenus sont
-legerement differents). Ils sont conserves tels quels en tant qu'artefacts
-historiques ; la presente licence racine prevaut pour tout nouveau code ajoute
-lors du retrofit 2026 (implementations, tests, configuration Maven, CI).
