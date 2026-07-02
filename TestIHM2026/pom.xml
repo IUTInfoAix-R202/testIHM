@@ -18,7 +18,7 @@
 
         <!-- Java & JavaFX versions -->
         <maven.compiler.release>25</maven.compiler.release>
-        <javafx.version>26</javafx.version>
+        <javafx.version>26.0.1</javafx.version>
         <javafx.mainClass>quantik/fr.univ_amu.iut.QuantikMain</javafx.mainClass>
 
         <!-- Plugin versions -->
