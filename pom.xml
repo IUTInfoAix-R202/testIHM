@@ -34,7 +34,7 @@
         <maven.compiler.release>25</maven.compiler.release>
 
         <javafx.version>26.0.1</javafx.version>
-        <junit.jupiter.version>6.0.3</junit.jupiter.version>
+        <junit.jupiter.version>6.1.1</junit.jupiter.version>
         <assertj.version>3.27.7</assertj.version>
         <testfx.version>4.0.18</testfx.version>
         <ikonli.version>12.4.0</ikonli.version>
