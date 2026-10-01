@@ -33,7 +33,7 @@
         <junit.jupiter.version>6.1.1</junit.jupiter.version>
         <assertj.version>3.27.7</assertj.version>
         <testfx.version>4.0.18</testfx.version>
-        <mockito.version>5.23.0</mockito.version>
+        <mockito.version>5.24.0</mockito.version>
         <approvaltests.version>31.0.0</approvaltests.version>
     </properties>
 
